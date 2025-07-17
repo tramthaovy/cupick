@@ -38,66 +38,10 @@ const App = () => (
 
           {/* Main App Routes */}
           <Route path="/swipe" element={<Swipe />} />
-          <Route
-            path="/farm"
-            element={
-              <PlaceholderPage
-                title="Quản lý trang trại"
-                description="Quản lý con giống và theo dõi hoạt động trang trại"
-                features={[
-                  "Thêm, sửa, xóa thông tin con giống",
-                  "Xem thống kê lượt quẹt và kết nối",
-                  "Quản lý tin nhắn từ người mua",
-                  "Theo dõi lịch sử giao dịch",
-                ]}
-              />
-            }
-          />
-          <Route
-            path="/forum"
-            element={
-              <PlaceholderPage
-                title="Forum cộng đồng"
-                description="Chia sẻ kinh nghiệm và kết nối cộng đồng chăn nuôi"
-                features={[
-                  "Đăng bài viết về kỹ thuật chăn nuôi",
-                  "Hỏi đáp và chia sẻ kinh nghiệm",
-                  "Like, bình luận và chia sẻ bài viết",
-                  "Tìm kiếm theo chủ đề",
-                ]}
-              />
-            }
-          />
-          <Route
-            path="/messages"
-            element={
-              <PlaceholderPage
-                title="Tin nhắn"
-                description="Trò chuyện trực tiếp với người mua/bán"
-                features={[
-                  "Chat realtime với người đã kết nối",
-                  "Gửi ảnh và văn bản",
-                  "Chấp nhận hoặc từ chối kết nối",
-                  "Quản lý danh sách đoạn chat",
-                ]}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <PlaceholderPage
-                title="Hồ sơ cá nhân"
-                description="Quản lý thông tin và cài đặt tài khoản"
-                features={[
-                  "Chỉnh sửa thông tin cá nhân",
-                  "Xem bài viết đã đăng",
-                  "Lịch sử hoạt động",
-                  "Đổi mật khẩu và đăng xuất",
-                ]}
-              />
-            }
-          />
+          <Route path="/farm" element={<Farm />} />
+          <Route path="/forum" element={<Forum />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/profile" element={<Profile />} />
 
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
