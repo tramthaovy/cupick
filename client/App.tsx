@@ -1,3 +1,4 @@
+import React from "react";
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -56,7 +57,7 @@ const App = () => (
                 title="Forum cộng đồng"
                 description="Chia sẻ kinh nghiệm và kết nối cộng đồng chăn nuôi"
                 features={[
-                  "Đăng bài viết về kỹ thuật chăn nuôi",
+                  "��ăng bài viết về kỹ thuật chăn nuôi",
                   "Hỏi đáp và chia sẻ kinh nghiệm",
                   "Like, bình luận và chia sẻ bài viết",
                   "Tìm kiếm theo chủ đề",
