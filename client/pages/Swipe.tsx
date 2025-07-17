@@ -140,10 +140,10 @@ export default function Swipe() {
                 <span className="text-4xl">{currentAnimal.image}</span>
               </div>
               <CardTitle className="text-xl">{currentAnimal.name}</CardTitle>
-              <CardDescription className="flex items-center justify-center space-x-1">
+              <div className="flex items-center justify-center space-x-1 mt-2">
                 <Badge variant="secondary">{currentAnimal.breed}</Badge>
                 <Badge variant="outline">{currentAnimal.age}</Badge>
-              </CardDescription>
+              </div>
             </CardHeader>
 
             <CardContent className="relative z-10 space-y-4">
