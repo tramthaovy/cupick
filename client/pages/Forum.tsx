@@ -210,7 +210,7 @@ export default function Forum() {
               variant="ghost"
               size="sm"
               onClick={() => {
-                alert("Thông báo sẽ được hiển thị ở đây");
+                alert("Thông báo sẽ được hiển th�� ở đây");
               }}
             >
               <Bell className="h-4 w-4" />
@@ -456,6 +456,107 @@ export default function Forum() {
                 Đăng bài
               </Button>
             </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Post Detail Modal */}
+        <Dialog open={showPostDetail} onOpenChange={setShowPostDetail}>
+          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Chi tiết bài viết</DialogTitle>
+            </DialogHeader>
+            {selectedPost && (
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Avatar className="w-10 h-10">
+                    <AvatarFallback>
+                      {selectedPost.author.avatar}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium">
+                        {selectedPost.author.name}
+                      </span>
+                      <Badge variant="outline" className="text-xs">
+                        {selectedPost.topic}
+                      </Badge>
+                    </div>
+                    <span className="text-xs text-muted-foreground">
+                      {selectedPost.timeAgo}
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">
+                    {selectedPost.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
+                    {selectedPost.content}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 border-t border-border">
+                  <div className="flex items-center space-x-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`h-8 ${selectedPost.isLiked ? "text-red-500" : ""}`}
+                      onClick={() => handleLikePost(selectedPost.id)}
+                    >
+                      <Heart
+                        className={`h-3 w-3 mr-1 ${
+                          selectedPost.isLiked ? "fill-current" : ""
+                        }`}
+                      />
+                      {selectedPost.likes}
+                    </Button>
+                    <Button variant="ghost" size="sm" className="h-8">
+                      <MessageCircle className="h-3 w-3 mr-1" />
+                      {selectedPost.comments}
+                    </Button>
+                    <Button variant="ghost" size="sm" className="h-8">
+                      <Eye className="h-3 w-3 mr-1" />
+                      {selectedPost.views}
+                    </Button>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8"
+                    onClick={() => handleSharePost(selectedPost.id)}
+                  >
+                    <Share2 className="h-3 w-3" />
+                  </Button>
+                </div>
+
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Bình luận</h4>
+                  <div className="space-y-2">
+                    <div className="bg-muted p-3 rounded-lg">
+                      <div className="flex items-center space-x-2 mb-1">
+                        <Avatar className="w-6 h-6">
+                          <AvatarFallback className="text-xs">B</AvatarFallback>
+                        </Avatar>
+                        <span className="text-sm font-medium">Trần Thị B</span>
+                        <span className="text-xs text-muted-foreground">
+                          1 giờ trước
+                        </span>
+                      </div>
+                      <p className="text-sm">
+                        Bài viết rất hữu ích! Cảm ơn bạn đã chia sẻ.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex space-x-2">
+                    <Input placeholder="Thêm bình luận..." className="flex-1" />
+                    <Button size="sm">Gửi</Button>
+                  </div>
+                </div>
+              </div>
+            )}
           </DialogContent>
         </Dialog>
 
