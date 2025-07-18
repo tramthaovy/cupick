@@ -106,15 +106,25 @@ const animals = [
 export default function Farm() {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState<any>(null);
   const [newAnimal, setNewAnimal] = useState({
     name: "",
+    species: "",
     breed: "",
     age: "",
     description: "",
     health: "",
     price: "",
+    weight: "",
   });
+
+  // Species options
+  const speciesOptions = [
+    { value: "cow", label: "Bò", emoji: "🐄" },
+    { value: "pig", label: "Heo/Lợn", emoji: "🐷" },
+    { value: "chicken", label: "Gà", emoji: "🐓" },
+  ];
 
   const handleAddAnimal = () => {
     // In real app, this would call API
