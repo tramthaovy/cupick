@@ -37,6 +37,7 @@ import {
   MessageCircle,
   BarChart3,
   Camera,
+  Bell,
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 
@@ -378,7 +379,7 @@ export default function Farm() {
                 onClick={() => setShowAddDialog(false)}
                 className="flex-1"
               >
-                Hủy
+                H���y
               </Button>
               <Button onClick={handleAddAnimal} className="flex-1">
                 Lưu
