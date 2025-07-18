@@ -84,6 +84,7 @@ const animals = [
 ];
 
 export default function Swipe() {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showMatch, setShowMatch] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
