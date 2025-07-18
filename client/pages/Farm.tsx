@@ -53,38 +53,53 @@ const animals = [
   {
     id: 1,
     name: "Bò Wagyu A5",
+    species: "cow",
     breed: "Wagyu",
     age: "2 tuổi",
     health: "Tốt",
     price: "45.000.000 VND",
     status: "Đang hiển thị",
-    image: "🐄",
+    image:
+      "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop",
     swipes: 45,
     matches: 3,
+    description: "Bò giống chất lượng cao, có giấy tờ nguồn gốc rõ ràng",
+    weight: "450kg",
+    location: "Long An",
   },
   {
     id: 2,
     name: "Lợn Duroc",
+    species: "pig",
     breed: "Duroc",
     age: "8 tháng",
     health: "Rất tốt",
     price: "8.500.000 VND",
     status: "Đang hiển thị",
-    image: "🐷",
+    image:
+      "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=400&h=300&fit=crop",
     swipes: 32,
     matches: 2,
+    description: "Lợn giống cao sản, phù hợp nuôi thương phẩm",
+    weight: "80kg",
+    location: "Đồng Nai",
   },
   {
     id: 3,
     name: "Gà Brahma",
+    species: "chicken",
     breed: "Brahma",
     age: "6 tháng",
     health: "Tốt",
     price: "450.000 VND",
     status: "Tạm ẩn",
-    image: "🐓",
+    image:
+      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop",
     swipes: 18,
     matches: 1,
+    description: "Gà giống to khỏe, khả năng sinh sản cao",
+    weight: "3.5kg",
+    location: "Bình Dương",
   },
 ];
 
@@ -150,7 +165,7 @@ export default function Farm() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Theo dõi và quản lý con giống của bạn
+            Theo d��i và quản lý con giống của bạn
           </p>
         </div>
 
