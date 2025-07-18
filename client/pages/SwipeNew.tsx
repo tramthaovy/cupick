@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Heart, X, Eye, MapPin, Bell, Star, MessageCircle } from "lucide-react";
+import { Heart, X, Eye, MapPin, Bell } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 import NotificationModal from "@/components/NotificationModal";
 
