@@ -453,8 +453,17 @@ export default function Swipe() {
 
               <div className="space-y-4">
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <span className="text-4xl">{currentAnimal.image}</span>
+                  <div className="w-24 h-24 rounded-xl overflow-hidden mx-auto mb-3">
+                    <img
+                      src={currentAnimal.image}
+                      alt={currentAnimal.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src =
+                          "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0zNiA0OEgyNFYzNkg3MlY2MEg2MFY0OEg0OFYzNkgzNlY0OFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                      }}
+                    />
                   </div>
                   <h3 className="text-lg font-bold">{currentAnimal.name}</h3>
                   <div className="flex items-center justify-center space-x-1 mt-2">
