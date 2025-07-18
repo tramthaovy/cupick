@@ -88,7 +88,7 @@ const conversations = [
     participant: {
       name: "Nguyễn Thị B",
       avatar: "B",
-      role: "Ng��ời nhận", // buyer
+      role: "Người nhận", // buyer
     },
     animal: "Lợn Duroc",
     lastMessage: "Em quan tâm đến con lợn này",
@@ -180,8 +180,49 @@ export default function Messages() {
   const handleSendMessage = () => {
     if (newMessage.trim()) {
       console.log("Sending message:", newMessage);
+      // In real app, this would send to API
       setNewMessage("");
     }
+  };
+
+  const handleSendAIMessage = () => {
+    if (aiInput.trim()) {
+      // Add user message
+      const userMessage = {
+        id: aiMessages.length + 1,
+        content: aiInput,
+        isBot: false,
+        timestamp: "Bây giờ",
+      };
+
+      setAiMessages((prev) => [...prev, userMessage]);
+
+      // Simulate AI response
+      setTimeout(() => {
+        const responses = [
+          "Tôi hiểu bạn quan tâm về vấn đề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
+          "Về giá cả hiện tại, thị trường đang có xu hướng tăng nhẹ. Bạn có thể tham khảo...",
+          "Để chọn con giống tốt, bạn cần chú ý đến sức khỏe, nguồn gốc và độ tuổi...",
+          "Tôi có thể giúp bạn kết nối với những người bán uy tín trong khu vực của bạn.",
+        ];
+
+        const aiResponse = {
+          id: aiMessages.length + 2,
+          content: responses[Math.floor(Math.random() * responses.length)],
+          isBot: true,
+          timestamp: "Bây giờ",
+        };
+
+        setAiMessages((prev) => [...prev, aiResponse]);
+      }, 1000);
+
+      setAiInput("");
+    }
+  };
+
+  const handleStartConversation = (match: any) => {
+    console.log("Starting conversation with:", match.name);
+    // In real app, this would create a new conversation
   };
 
   const handleAcceptConnection = (conversationId: number) => {
