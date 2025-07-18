@@ -37,7 +37,7 @@ const animals = [
     description: "Lợn giống cao sản, phù hợp nuôi thương phẩm",
     health: "Rất tốt",
     price: "8.500.000 VND",
-    owner: "Trang trại Hòa Bình",
+    owner: "Trang trại Hòa B��nh",
     location: "Đồng Nai",
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
@@ -347,8 +347,8 @@ export default function Swipe() {
               </div>
             </CardHeader>
 
-            <CardContent className="relative z-10 space-y-4">
-              <p className="text-sm text-center text-muted-foreground">
+            <CardContent className="relative z-10 space-y-4 bg-black/50 rounded-lg p-4 m-4">
+              <p className="text-sm text-center text-white">
                 {currentAnimal.description}
               </p>
 
