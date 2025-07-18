@@ -402,7 +402,18 @@ export default function Messages() {
       <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-primary/5 to-accent/5">
         {/* Header */}
         <div className="bg-white border-b border-border p-4">
-          <h1 className="text-2xl font-bold text-primary">Tin nhắn</h1>
+          <div className="flex items-center justify-between mb-1">
+            <h1 className="text-2xl font-bold text-primary">Tin nhắn</h1>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                alert("Thông báo sẽ được hiển thị ở đây");
+              }}
+            >
+              <Bell className="h-5 w-5" />
+            </Button>
+          </div>
           <p className="text-sm text-muted-foreground">
             Các cuộc trò chuyện từ kết nối
           </p>
