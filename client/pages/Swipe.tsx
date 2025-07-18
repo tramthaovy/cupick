@@ -76,7 +76,7 @@ const animals = [
     price: "450.000 VND",
     owner: "Trại gia cầm Minh Anh",
     location: "Bình Dương",
-    image: "����",
+    image: "🐓",
     tags: ["Gà to", "Sinh sản cao", "Dễ nuôi"],
   },
 ];
@@ -296,6 +296,123 @@ export default function Swipe() {
                   Tiếp tục quẹt
                 </Button>
                 <Button className="flex-1">Nhắn tin ngay</Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Detail Modal */}
+        {showDetailModal && (
+          <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div className="bg-background rounded-3xl p-6 max-w-sm w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold">Chi tiết con giống</h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowDetailModal(false)}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <span className="text-4xl">{currentAnimal.image}</span>
+                  </div>
+                  <h3 className="text-lg font-bold">{currentAnimal.name}</h3>
+                  <div className="flex items-center justify-center space-x-1 mt-2">
+                    <Badge variant="secondary">{currentAnimal.breed}</Badge>
+                    <Badge variant="outline">{currentAnimal.age}</Badge>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold mb-2">Mô tả</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {currentAnimal.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Đặc điểm</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {currentAnimal.tags.map((tag, index) => (
+                        <Badge
+                          key={index}
+                          variant="outline"
+                          className="text-xs"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Sức khỏe:</span>
+                      <div className="mt-1">
+                        <Badge
+                          variant={
+                            currentAnimal.health === "Rất tốt"
+                              ? "default"
+                              : "secondary"
+                          }
+                        >
+                          {currentAnimal.health}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Giá:</span>
+                      <div className="mt-1 font-semibold text-primary">
+                        {currentAnimal.price}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Avatar className="w-6 h-6">
+                        <AvatarFallback className="text-xs">
+                          {currentAnimal.owner.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="font-medium">{currentAnimal.owner}</span>
+                    </div>
+                    <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                      <MapPin className="h-3 w-3" />
+                      <span>{currentAnimal.location}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex space-x-3 pt-4">
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => {
+                      setShowDetailModal(false);
+                      handleSwipe("left");
+                    }}
+                  >
+                    <X className="h-4 w-4 mr-2" />
+                    Bỏ qua
+                  </Button>
+                  <Button
+                    className="flex-1"
+                    onClick={() => {
+                      setShowDetailModal(false);
+                      handleSwipe("right");
+                    }}
+                  >
+                    <Heart className="h-4 w-4 mr-2" />
+                    Quan tâm
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
