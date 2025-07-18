@@ -37,6 +37,7 @@ import {
   TrendingUp,
   Clock,
   Eye,
+  Bell,
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 
@@ -90,7 +91,7 @@ const posts = [
     id: 1,
     title: "Cách chăm sóc bò Wagyu trong mùa mưa",
     content:
-      "Mình muốn chia sẻ kinh nghiệm chăm sóc bò Wagyu trong mùa mưa. Đi���u quan trọng nhất là giữ chuồng trại khô ráo và thông thoáng...",
+      "Mình muốn chia sẻ kinh nghiệm chăm sóc bò Wagyu trong mùa mưa. Điều quan trọng nhất là giữ chuồng trại khô ráo và thông thoáng...",
     author: {
       name: "Nguyễn Văn A",
       avatar: "A",
