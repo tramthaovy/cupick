@@ -502,6 +502,291 @@ export default function Farm() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+
+        {/* Edit Animal Dialog */}
+        <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
+          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Chỉnh sửa con giống</DialogTitle>
+              <DialogDescription>
+                Cập nhật thông tin chi tiết về con giống
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="w-20 h-20 bg-muted rounded-xl flex items-center justify-center">
+                  <Camera className="h-8 w-8 text-muted-foreground" />
+                </div>
+                <Button variant="outline" size="sm">
+                  Thay đổi ảnh
+                </Button>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <Label htmlFor="editName">Tên con giống</Label>
+                  <Input
+                    id="editName"
+                    value={newAnimal.name}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, name: e.target.value })
+                    }
+                    placeholder="Nhập tên"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="editSpecies">Loài vật</Label>
+                  <Select
+                    value={newAnimal.species}
+                    onValueChange={(value) =>
+                      setNewAnimal({ ...newAnimal, species: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Chọn loài vật" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {speciesOptions.map((species) => (
+                        <SelectItem key={species.value} value={species.value}>
+                          {species.emoji} {species.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="editBreed">Giống</Label>
+                  <Input
+                    id="editBreed"
+                    value={newAnimal.breed}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, breed: e.target.value })
+                    }
+                    placeholder="Nh���p giống"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="editAge">Tuổi</Label>
+                  <Input
+                    id="editAge"
+                    value={newAnimal.age}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, age: e.target.value })
+                    }
+                    placeholder="Nhập tuổi"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="editWeight">Cân nặng</Label>
+                  <Input
+                    id="editWeight"
+                    value={newAnimal.weight}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, weight: e.target.value })
+                    }
+                    placeholder="Nhập cân nặng (kg)"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="editHealth">Tình trạng sức khỏe</Label>
+                  <Select
+                    value={newAnimal.health}
+                    onValueChange={(value) =>
+                      setNewAnimal({ ...newAnimal, health: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Chọn tình trạng" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Rất tốt">Rất tốt</SelectItem>
+                      <SelectItem value="Tốt">Tốt</SelectItem>
+                      <SelectItem value="Bình thường">Bình thường</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="editPrice">Giá (VND)</Label>
+                  <Input
+                    id="editPrice"
+                    value={newAnimal.price}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, price: e.target.value })
+                    }
+                    placeholder="Nhập giá"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="editDescription">Mô tả</Label>
+                  <Textarea
+                    id="editDescription"
+                    value={newAnimal.description}
+                    onChange={(e) =>
+                      setNewAnimal({
+                        ...newAnimal,
+                        description: e.target.value,
+                      })
+                    }
+                    placeholder="Mô tả chi tiết về con giống"
+                    rows={3}
+                  />
+                </div>
+              </div>
+            </div>
+            <DialogFooter className="flex space-x-2">
+              <Button
+                variant="outline"
+                onClick={() => setShowEditDialog(false)}
+                className="flex-1"
+              >
+                Hủy
+              </Button>
+              <Button onClick={handleSaveEdit} className="flex-1">
+                Lưu thay đổi
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Animal Detail Modal */}
+        <Dialog open={showDetailModal} onOpenChange={setShowDetailModal}>
+          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Chi tiết con giống</DialogTitle>
+            </DialogHeader>
+            {selectedAnimal && (
+              <div className="space-y-4">
+                <div className="text-center">
+                  <div className="w-32 h-32 rounded-xl overflow-hidden mx-auto mb-4">
+                    <img
+                      src={selectedAnimal.image}
+                      alt={selectedAnimal.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src =
+                          "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00OCA2NEgzMlY0OEg5NlY4MEg4MFY2NEg2NFY0OEg0OFY2NFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                      }}
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold">{selectedAnimal.name}</h3>
+                  <div className="flex items-center justify-center space-x-2 mt-2">
+                    <Badge variant="secondary">{selectedAnimal.breed}</Badge>
+                    <Badge variant="outline">{selectedAnimal.age}</Badge>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold mb-2">Thông tin cơ bản</h4>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div>
+                        <span className="text-muted-foreground">Loài:</span>
+                        <div className="mt-1 font-medium">
+                          {
+                            speciesOptions.find(
+                              (s) => s.value === selectedAnimal.species,
+                            )?.label
+                          }
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Cân nặng:</span>
+                        <div className="mt-1 font-medium">
+                          {selectedAnimal.weight}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Sức khỏe:</span>
+                        <div className="mt-1">
+                          <Badge
+                            variant={
+                              selectedAnimal.health === "Rất tốt"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
+                            {selectedAnimal.health}
+                          </Badge>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Giá:</span>
+                        <div className="mt-1 font-semibold text-primary">
+                          {selectedAnimal.price}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Mô tả</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {selectedAnimal.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Thống kê</h4>
+                    <div className="grid grid-cols-3 gap-3 text-center">
+                      <div className="bg-muted p-3 rounded-lg">
+                        <div className="text-lg font-bold text-primary">
+                          {selectedAnimal.swipes}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Lượt quẹt
+                        </div>
+                      </div>
+                      <div className="bg-muted p-3 rounded-lg">
+                        <div className="text-lg font-bold text-accent">
+                          {selectedAnimal.matches}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Kết nối
+                        </div>
+                      </div>
+                      <div className="bg-muted p-3 rounded-lg">
+                        <div className="text-lg font-bold text-blue-500">
+                          {selectedAnimal.status === "Đang hiển thị"
+                            ? "Hiển thị"
+                            : "Ẩn"}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Trạng thái
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex space-x-3 pt-4">
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => {
+                      setShowDetailModal(false);
+                      handleEditAnimal(selectedAnimal);
+                    }}
+                  >
+                    <Edit className="h-4 w-4 mr-2" />
+                    Chỉnh sửa
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => {
+                      setShowDetailModal(false);
+                      handleDeleteAnimal(selectedAnimal.id);
+                    }}
+                  >
+                    <Trash2 className="h-4 w-4 mr-2" />
+                    Xóa
+                  </Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </MobileLayout>
   );
