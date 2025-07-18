@@ -76,7 +76,7 @@ const animals = [
     price: "450.000 VND",
     owner: "Trại gia cầm Minh Anh",
     location: "Bình Dương",
-    image: "🐓",
+    image: "����",
     tags: ["Gà to", "Sinh sản cao", "Dễ nuôi"],
   },
 ];
@@ -178,7 +178,15 @@ export default function Swipe() {
 
         {/* Animal Card */}
         <div className="h-full flex items-center justify-center p-4">
-          <Card className="w-full max-w-sm h-[600px] relative overflow-hidden shadow-2xl">
+          <Card
+            className={`w-full max-w-sm h-[600px] relative overflow-hidden shadow-2xl transition-transform duration-300 ${
+              swipeDirection === "left"
+                ? "transform -translate-x-full rotate-12"
+                : swipeDirection === "right"
+                  ? "transform translate-x-full rotate-12"
+                  : ""
+            }`}
+          >
             {/* Background with animal emoji */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
               <span className="text-[200px] opacity-20">
