@@ -453,6 +453,15 @@ export default function Forum() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+
+        {/* Floating Action Button */}
+        <Button
+          onClick={() => setShowCreatePost(true)}
+          className="fixed bottom-24 right-4 w-14 h-14 rounded-full shadow-lg z-50"
+          size="lg"
+        >
+          <Plus className="h-6 w-6" />
+        </Button>
       </div>
     </MobileLayout>
   );
