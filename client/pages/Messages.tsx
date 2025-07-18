@@ -88,7 +88,7 @@ const conversations = [
     participant: {
       name: "Nguyễn Thị B",
       avatar: "B",
-      role: "Người nhận", // buyer
+      role: "Ng��ời nhận", // buyer
     },
     animal: "Lợn Duroc",
     lastMessage: "Em quan tâm đến con lợn này",
@@ -158,6 +158,20 @@ export default function Messages() {
   const [newMessage, setNewMessage] = useState("");
   const [showBlockDialog, setShowBlockDialog] = useState(false);
   const [showEndChatDialog, setShowEndChatDialog] = useState(false);
+  const [activeTab, setActiveTab] = useState<
+    "conversations" | "matches" | "ai"
+  >("conversations");
+  const [showAIChat, setShowAIChat] = useState(false);
+  const [aiMessages, setAiMessages] = useState([
+    {
+      id: 1,
+      content:
+        "Xin chào! Tôi là AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
+      isBot: true,
+      timestamp: "Bây giờ",
+    },
+  ]);
+  const [aiInput, setAiInput] = useState("");
 
   const handleSelectChat = (conversation: any) => {
     setSelectedChat(conversation);
@@ -276,7 +290,7 @@ export default function Messages() {
                   <div className="flex items-center space-x-2">
                     <Clock className="h-4 w-4 text-yellow-600" />
                     <span className="text-sm font-medium text-yellow-800">
-                      Chờ b���n phản hồi kết nối
+                      Chờ bạn phản hồi kết nối
                     </span>
                   </div>
                   <div className="flex space-x-2">
