@@ -41,6 +41,7 @@ import {
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 import NotificationModal from "@/components/NotificationModal";
+import { useNavigate } from "react-router-dom";
 
 // Sample topics data
 const topics = [
