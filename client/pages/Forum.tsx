@@ -187,8 +187,11 @@ export default function Forum() {
   };
 
   const handleViewPost = (postId: number) => {
-    alert(`Đang mở chi tiết bài viết ID: ${postId}`);
-    // In real app, would navigate to post detail page
+    const post = posts.find((p) => p.id === postId);
+    if (post) {
+      setSelectedPost(post);
+      setShowPostDetail(true);
+    }
   };
 
   const handleSharePost = (postId: number) => {
