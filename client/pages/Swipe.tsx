@@ -291,11 +291,19 @@ export default function Swipe() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Background with animal emoji */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <span className="text-[200px] opacity-20">
-                {currentAnimal.image}
-              </span>
+            {/* Background with animal image */}
+            <div className="absolute inset-0">
+              <img
+                src={currentAnimal.image}
+                alt={currentAnimal.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src =
+                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDQwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTAgMzAwSDEwMFYyNTBIMzAwVjM1MEgyNTBWMzAwSDIwMFYyNTBIMTUwVjMwMFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
             </div>
 
             {/* Swipe Direction Indicators */}
