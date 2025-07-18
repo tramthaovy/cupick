@@ -75,7 +75,7 @@ const animals = [
     age: "8 tháng",
     health: "Rất tốt",
     price: "8.500.000 VND",
-    status: "Đang hi���n thị",
+    status: "Đang hiển thị",
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=400&h=300&fit=crop",
     swipes: 32,
@@ -242,7 +242,7 @@ export default function Farm() {
                 <div className="text-2xl font-bold text-pink-500">
                   {farmStats.totalMatches}
                 </div>
-                <div className="text-sm text-muted-foreground">Kết n���i</div>
+                <div className="text-sm text-muted-foreground">Kết nối</div>
               </CardContent>
             </Card>
             <Card>
@@ -448,6 +448,17 @@ export default function Farm() {
                       <SelectItem value="Bình thường">Bình thường</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+                <div>
+                  <Label htmlFor="weight">Cân nặng</Label>
+                  <Input
+                    id="weight"
+                    value={newAnimal.weight}
+                    onChange={(e) =>
+                      setNewAnimal({ ...newAnimal, weight: e.target.value })
+                    }
+                    placeholder="Nhập cân nặng (kg)"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="price">Giá (VND)</Label>
