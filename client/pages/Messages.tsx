@@ -39,6 +39,34 @@ import {
 } from "@/components/ui/dropdown-menu";
 import MobileLayout from "@/components/MobileLayout";
 
+// Sample matched data
+const matchedUsers = [
+  {
+    id: 1,
+    name: "Lê Thị D",
+    avatar: "D",
+    animal: "Bò Wagyu A5",
+    matchTime: "2 giờ trước",
+    isNew: true,
+  },
+  {
+    id: 2,
+    name: "Nguyễn Văn E",
+    avatar: "E",
+    animal: "Lợn Yorkshire",
+    matchTime: "1 ngày trước",
+    isNew: false,
+  },
+  {
+    id: 3,
+    name: "Trần Minh F",
+    avatar: "F",
+    animal: "Gà Brahma",
+    matchTime: "3 ngày trước",
+    isNew: false,
+  },
+];
+
 // Sample chat data
 const conversations = [
   {
@@ -248,7 +276,7 @@ export default function Messages() {
                   <div className="flex items-center space-x-2">
                     <Clock className="h-4 w-4 text-yellow-600" />
                     <span className="text-sm font-medium text-yellow-800">
-                      Chờ bạn phản hồi kết nối
+                      Chờ b���n phản hồi kết nối
                     </span>
                   </div>
                   <div className="flex space-x-2">
