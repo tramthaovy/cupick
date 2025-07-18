@@ -578,8 +578,38 @@ export default function Messages() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Các cuộc trò chuyện từ kết nối
+            Kết nối và tư vấn chăn nuôi
           </p>
+
+          {/* Tabs */}
+          <div className="flex space-x-1 mt-3 bg-muted rounded-lg p-1">
+            <Button
+              variant={activeTab === "conversations" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setActiveTab("conversations")}
+              className="flex-1 h-8"
+            >
+              Trò chuyện
+            </Button>
+            <Button
+              variant={activeTab === "matches" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setActiveTab("matches")}
+              className="flex-1 h-8"
+            >
+              <Heart className="h-3 w-3 mr-1" />
+              Đã Match
+            </Button>
+            <Button
+              variant={activeTab === "ai" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setActiveTab("ai")}
+              className="flex-1 h-8"
+            >
+              <Bot className="h-3 w-3 mr-1" />
+              AI Assistant
+            </Button>
+          </div>
         </div>
 
         <div className="p-4">
