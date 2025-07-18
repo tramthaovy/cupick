@@ -292,6 +292,29 @@ export default function Swipe() {
               </span>
             </div>
 
+            {/* Swipe Direction Indicators */}
+            {isDragging && (
+              <>
+                {/* Like indicator (right swipe) */}
+                <div
+                  className={`absolute top-8 right-8 bg-green-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform rotate-12 transition-opacity ${
+                    dragOffset.x > 50 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  THÍCH ❤️
+                </div>
+
+                {/* Pass indicator (left swipe) */}
+                <div
+                  className={`absolute top-8 left-8 bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform -rotate-12 transition-opacity ${
+                    dragOffset.x < -50 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  BỎ QUA ✕
+                </div>
+              </>
+            )}
+
             {/* Content */}
             <CardHeader className="relative z-10 text-center pb-4">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
