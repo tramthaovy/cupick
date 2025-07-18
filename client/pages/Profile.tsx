@@ -143,8 +143,13 @@ export default function Profile() {
   });
 
   const handleSaveProfile = () => {
-    console.log("Saving profile:", editData);
+    // Update user data with new information
+    Object.assign(userData, editData);
+    console.log("Profile updated:", userData);
     setShowEditDialog(false);
+
+    // Show success notification
+    alert("Thông tin đã được cập nhật thành công!");
   };
 
   const handleChangePassword = () => {
@@ -355,7 +360,7 @@ export default function Profile() {
 
             <TabsContent value="activity" className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold">Lịch sử hoạt động</h3>
+                <h3 className="font-semibold">Lịch sử ho���t động</h3>
                 <Badge variant="secondary">{activityHistory.length}</Badge>
               </div>
               {activityHistory.map((activity) => {
@@ -493,7 +498,7 @@ export default function Profile() {
             <DialogHeader>
               <DialogTitle>Đổi mật khẩu</DialogTitle>
               <DialogDescription>
-                Nhập mật khẩu hi���n tại và mật khẩu mới
+                Nhập mật khẩu hiện tại và mật khẩu mới
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
