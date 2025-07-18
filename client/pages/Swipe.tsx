@@ -58,7 +58,7 @@ const animals = [
     name: "Lợn Landrace",
     breed: "Landrace",
     age: "7 tháng",
-    description: "Lợn đực giống chất lượng, tốc độ tăng trọng nhanh",
+    description: "Lợn đực giống chất lượng, t���c độ tăng trọng nhanh",
     health: "Rất tốt",
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
@@ -88,6 +88,12 @@ export default function Swipe() {
   const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(
     null,
   );
+
+  // Drag/swipe state
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [cardRotation, setCardRotation] = useState(0);
 
   const currentAnimal = animals[currentIndex];
 
