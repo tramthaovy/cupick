@@ -77,7 +77,7 @@ const conversations = [
       role: "Người cho", // seller
     },
     animal: "Bò Wagyu A5",
-    lastMessage: "Bò này còn kh��ng anh?",
+    lastMessage: "Bò này còn không anh?",
     timestamp: "10:30",
     unreadCount: 2,
     status: "accepted", // accepted, pending, expired
@@ -518,7 +518,7 @@ export default function Messages() {
           {selectedChat.status === "accepted" && (
             <div className="border-t border-border p-4">
               <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" onClick={handleSendImage}>
                   <Image className="h-4 w-4" />
                 </Button>
                 <Input
