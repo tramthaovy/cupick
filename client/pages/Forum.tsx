@@ -175,12 +175,23 @@ export default function Forum() {
   };
 
   const handleLikePost = (postId: number) => {
-    console.log("Liking post:", postId);
+    // Toggle like status and update count
+    const postIndex = posts.findIndex((p) => p.id === postId);
+    if (postIndex !== -1) {
+      posts[postIndex].isLiked = !posts[postIndex].isLiked;
+      posts[postIndex].likes += posts[postIndex].isLiked ? 1 : -1;
+      console.log("Post like toggled:", posts[postIndex]);
+    }
   };
 
   const handleViewPost = (postId: number) => {
-    console.log("Viewing post:", postId);
-    // In real app, would navigate to post detail
+    alert(`Đang mở chi tiết bài viết ID: ${postId}`);
+    // In real app, would navigate to post detail page
+  };
+
+  const handleSharePost = (postId: number) => {
+    alert("Chức năng chia sẻ sẽ được thêm sau");
+    console.log("Sharing post:", postId);
   };
 
   return (
