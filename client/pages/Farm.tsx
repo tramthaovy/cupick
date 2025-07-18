@@ -75,7 +75,7 @@ const animals = [
     age: "8 tháng",
     health: "Rất tốt",
     price: "8.500.000 VND",
-    status: "Đang hiển thị",
+    status: "Đang hi���n thị",
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=400&h=300&fit=crop",
     swipes: 32,
@@ -214,7 +214,7 @@ export default function Farm() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Theo d���i và quản lý con giống của bạn
+            Theo d��i và quản lý con giống của bạn
           </p>
         </div>
 
@@ -242,7 +242,7 @@ export default function Farm() {
                 <div className="text-2xl font-bold text-pink-500">
                   {farmStats.totalMatches}
                 </div>
-                <div className="text-sm text-muted-foreground">Kết nối</div>
+                <div className="text-sm text-muted-foreground">Kết n���i</div>
               </CardContent>
             </Card>
             <Card>
@@ -388,6 +388,26 @@ export default function Farm() {
                     }
                     placeholder="Nhập tên"
                   />
+                </div>
+                <div>
+                  <Label htmlFor="species">Loài vật</Label>
+                  <Select
+                    value={newAnimal.species}
+                    onValueChange={(value) =>
+                      setNewAnimal({ ...newAnimal, species: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Chọn loài vật" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {speciesOptions.map((species) => (
+                        <SelectItem key={species.value} value={species.value}>
+                          {species.emoji} {species.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <Label htmlFor="breed">Giống</Label>
