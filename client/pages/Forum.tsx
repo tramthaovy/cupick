@@ -213,7 +213,7 @@ export default function Forum() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setShowNotifications(true)}
+              onClick={() => navigate("/notifications")}
             >
               <Bell className="h-4 w-4" />
             </Button>
