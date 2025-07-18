@@ -211,9 +211,7 @@ export default function Forum() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                alert("Thông báo sẽ được hiển thị ở đây");
-              }}
+              onClick={() => setShowNotifications(true)}
             >
               <Bell className="h-4 w-4" />
             </Button>
@@ -541,7 +539,7 @@ export default function Forum() {
                         <Avatar className="w-6 h-6">
                           <AvatarFallback className="text-xs">B</AvatarFallback>
                         </Avatar>
-                        <span className="text-sm font-medium">Trần Th�� B</span>
+                        <span className="text-sm font-medium">Trần Thị B</span>
                         <span className="text-xs text-muted-foreground">
                           1 giờ trước
                         </span>
