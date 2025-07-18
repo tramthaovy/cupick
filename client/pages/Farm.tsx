@@ -208,9 +208,7 @@ export default function Farm() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                alert("Thông báo sẽ được hiển thị ở đây");
-              }}
+              onClick={() => navigate("/notifications")}
             >
               <Bell className="h-5 w-5" />
             </Button>
@@ -619,7 +617,7 @@ export default function Farm() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="editDescription">M�� tả</Label>
+                  <Label htmlFor="editDescription">Mô tả</Label>
                   <Textarea
                     id="editDescription"
                     value={newAnimal.description}
