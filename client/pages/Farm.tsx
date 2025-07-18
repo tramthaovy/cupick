@@ -135,9 +135,20 @@ export default function Farm() {
       <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-primary/5 to-accent/5">
         {/* Header */}
         <div className="bg-white border-b border-border p-4">
-          <h1 className="text-2xl font-bold text-primary mb-1">
-            Quản lý trang trại
-          </h1>
+          <div className="flex items-center justify-between mb-1">
+            <h1 className="text-2xl font-bold text-primary">
+              Quản lý trang trại
+            </h1>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                alert("Thông báo sẽ được hiển thị ở đây");
+              }}
+            >
+              <Bell className="h-5 w-5" />
+            </Button>
+          </div>
           <p className="text-sm text-muted-foreground">
             Theo dõi và quản lý con giống của bạn
           </p>
@@ -379,7 +390,7 @@ export default function Farm() {
                 onClick={() => setShowAddDialog(false)}
                 className="flex-1"
               >
-                H���y
+                Hủy
               </Button>
               <Button onClick={handleAddAnimal} className="flex-1">
                 Lưu
