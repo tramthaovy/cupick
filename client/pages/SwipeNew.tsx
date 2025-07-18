@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Heart, X, Eye, MapPin, Bell } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 import NotificationModal from "@/components/NotificationModal";
+import { useNavigate } from "react-router-dom";
 
 // Sample animal data
 const animals = [
