@@ -39,7 +39,7 @@ const animals = [
     owner: "Trang trại Hòa Bình",
     location: "Đồng Nai",
     image: "🐷",
-    tags: ["Cao sản", "Th��ơng phẩm", "Khỏe mạnh"],
+    tags: ["Cao sản", "Thương phẩm", "Khỏe mạnh"],
   },
   {
     id: 3,
@@ -236,10 +236,7 @@ export default function Swipe() {
                 variant="ghost"
                 size="sm"
                 className="text-white hover:bg-white/20"
-                onClick={() => {
-                  // Show notifications
-                  alert("Thông báo sẽ được hiển thị ở đây");
-                }}
+                onClick={() => setShowNotifications(true)}
               >
                 <Bell className="h-5 w-5" />
               </Button>
