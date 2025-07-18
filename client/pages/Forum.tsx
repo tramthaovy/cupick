@@ -140,6 +140,7 @@ const posts = [
 ];
 
 export default function Forum() {
+  const navigate = useNavigate();
   const [selectedView, setSelectedView] = useState("all"); // "all" or topic id
   const [searchQuery, setSearchQuery] = useState("");
   const [showCreatePost, setShowCreatePost] = useState(false);
