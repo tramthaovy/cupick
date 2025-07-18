@@ -38,6 +38,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MobileLayout from "@/components/MobileLayout";
+import { useNavigate } from "react-router-dom";
 
 // Sample matched data
 const matchedUsers = [
