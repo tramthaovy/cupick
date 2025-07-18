@@ -60,7 +60,7 @@ const animals = [
     breed: "Landrace",
     age: "7 tháng",
     description: "Lợn đực giống chất lượng, tốc độ tăng trọng nhanh",
-    health: "Rất tốt",
+    health: "Rất t��t",
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
     location: "An Giang",
@@ -375,8 +375,8 @@ export default function Swipe() {
                 <Eye className="h-4 w-4 mr-2" />
                 Xem chi tiết
               </Button>
-            </CardContent>
-          </Card>
+                        </div>
+          </div>
         </div>
 
         {/* Action Buttons */}
