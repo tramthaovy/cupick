@@ -218,7 +218,7 @@ export default function Swipe() {
               Không còn con giống nào
             </h2>
             <p className="text-muted-foreground">
-              Hãy quay l��i sau để xem thêm
+              Hãy quay lại sau để xem thêm
             </p>
           </div>
         </div>
@@ -335,8 +335,15 @@ export default function Swipe() {
                 {currentAnimal.name}
               </CardTitle>
               <div className="flex items-center justify-center space-x-1 mt-2">
-                <Badge variant="secondary">{currentAnimal.breed}</Badge>
-                <Badge variant="outline">{currentAnimal.age}</Badge>
+                <Badge variant="secondary" className="bg-white/90 text-black">
+                  {currentAnimal.breed}
+                </Badge>
+                <Badge
+                  variant="outline"
+                  className="bg-white/20 text-white border-white/50"
+                >
+                  {currentAnimal.age}
+                </Badge>
               </div>
             </CardHeader>
 
