@@ -256,13 +256,34 @@ export default function Swipe() {
         {/* Animal Card */}
         <div className="h-full flex items-center justify-center p-4">
           <Card
-            className={`w-full max-w-sm h-[600px] relative overflow-hidden shadow-2xl transition-transform duration-300 ${
+            className={`w-full max-w-sm h-[600px] relative overflow-hidden shadow-2xl cursor-grab select-none ${
+              isDragging ? "cursor-grabbing" : ""
+            } ${
               swipeDirection === "left"
-                ? "transform -translate-x-full rotate-12"
+                ? "transition-transform duration-300 transform -translate-x-full rotate-12"
                 : swipeDirection === "right"
-                  ? "transform translate-x-full rotate-12"
-                  : ""
+                  ? "transition-transform duration-300 transform translate-x-full rotate-12"
+                  : isDragging
+                    ? ""
+                    : "transition-all duration-200"
             }`}
+            style={{
+              transform: isDragging
+                ? `translate(${dragOffset.x}px, ${dragOffset.y}px) rotate(${cardRotation}deg)`
+                : swipeDirection
+                  ? undefined
+                  : "translate(0px, 0px) rotate(0deg)",
+              opacity: isDragging
+                ? Math.max(0.7, 1 - Math.abs(dragOffset.x) / 300)
+                : 1,
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={isDragging ? handleMouseMove : undefined}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {/* Background with animal emoji */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
