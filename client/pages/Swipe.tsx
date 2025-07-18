@@ -539,6 +539,12 @@ export default function Swipe() {
             </div>
           </div>
         )}
+
+        {/* Notification Modal */}
+        <NotificationModal
+          open={showNotifications}
+          onOpenChange={setShowNotifications}
+        />
       </div>
     </MobileLayout>
   );
