@@ -99,6 +99,8 @@ export default function Swipe() {
 
   const handleSwipe = (direction: "left" | "right") => {
     setSwipeDirection(direction);
+    setDragOffset({ x: 0, y: 0 });
+    setCardRotation(0);
 
     // Add animation delay
     setTimeout(() => {
