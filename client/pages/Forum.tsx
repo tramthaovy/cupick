@@ -149,6 +149,7 @@ export default function Forum() {
   });
   const [selectedPost, setSelectedPost] = useState<any>(null);
   const [showPostDetail, setShowPostDetail] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const filteredPosts = posts.filter((post) => {
     // Filter by selected topic
@@ -540,7 +541,7 @@ export default function Forum() {
                         <Avatar className="w-6 h-6">
                           <AvatarFallback className="text-xs">B</AvatarFallback>
                         </Avatar>
-                        <span className="text-sm font-medium">Trần Thị B</span>
+                        <span className="text-sm font-medium">Trần Th�� B</span>
                         <span className="text-xs text-muted-foreground">
                           1 giờ trước
                         </span>
