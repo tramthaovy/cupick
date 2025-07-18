@@ -16,6 +16,7 @@ import Farm from "./pages/Farm";
 import Forum from "./pages/Forum";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
+import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
