@@ -40,6 +40,7 @@ import {
   Bell,
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
+import { useNavigate } from "react-router-dom";
 
 // Sample farm data
 const farmStats = {
