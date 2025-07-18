@@ -146,6 +146,8 @@ export default function Forum() {
     content: "",
     topic: "",
   });
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [showPostDetail, setShowPostDetail] = useState(false);
 
   const filteredPosts = posts.filter((post) => {
     // Filter by selected topic
