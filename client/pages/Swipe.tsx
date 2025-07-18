@@ -92,16 +92,23 @@ export default function Swipe() {
   const currentAnimal = animals[currentIndex];
 
   const handleSwipe = (direction: "left" | "right") => {
-    if (direction === "right") {
-      // Show match popup
-      setShowMatch(true);
-      setTimeout(() => {
-        setShowMatch(false);
+    setSwipeDirection(direction);
+
+    // Add animation delay
+    setTimeout(() => {
+      if (direction === "right") {
+        // Show match popup
+        setShowMatch(true);
+        setTimeout(() => {
+          setShowMatch(false);
+          nextAnimal();
+          setSwipeDirection(null);
+        }, 2000);
+      } else {
         nextAnimal();
-      }, 2000);
-    } else {
-      nextAnimal();
-    }
+        setSwipeDirection(null);
+      }
+    }, 300);
   };
 
   const nextAnimal = () => {
@@ -113,8 +120,7 @@ export default function Swipe() {
   };
 
   const handleViewDetails = () => {
-    // In a real app, this would open a detail modal or navigate to a detail page
-    alert(`Xem chi tiết ${currentAnimal.name}`);
+    setShowDetailModal(true);
   };
 
   if (!currentAnimal) {
