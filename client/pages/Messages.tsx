@@ -28,6 +28,8 @@ import {
   CheckCheck,
   AlertTriangle,
   Bell,
+  Bot,
+  Heart,
 } from "lucide-react";
 import {
   DropdownMenu,
