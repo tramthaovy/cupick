@@ -25,7 +25,8 @@ const animals = [
     price: "45.000.000 VND",
     owner: "Trại Thành Đạt",
     location: "Long An",
-    image: "🐄",
+    image:
+      "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&h=400&fit=crop",
     tags: ["Giống nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
   },
   {
@@ -38,7 +39,8 @@ const animals = [
     price: "8.500.000 VND",
     owner: "Trang trại Hòa Bình",
     location: "Đồng Nai",
-    image: "🐷",
+    image:
+      "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
     tags: ["Cao sản", "Thương phẩm", "Khỏe mạnh"],
   },
   {
@@ -51,7 +53,8 @@ const animals = [
     price: "12.000.000 VND",
     owner: "Trại chăn nuôi Phước An",
     location: "Tiền Giang",
-    image: "🐖",
+    image:
+      "https://images.unsplash.com/photo-1573160103600-1eba0c5c8763?w=600&h=400&fit=crop",
     tags: ["Nái giống", "Sinh sản cao", "Thuần chủng"],
   },
   {
@@ -64,7 +67,8 @@ const animals = [
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
     location: "An Giang",
-    image: "🐷",
+    image:
+      "https://images.unsplash.com/photo-1518492104633-130d0b3fd5bc?w=600&h=400&fit=crop",
     tags: ["Đực giống", "Tăng trọng nhanh", "Chất lượng"],
   },
   {
@@ -77,7 +81,8 @@ const animals = [
     price: "450.000 VND",
     owner: "Trại gia cầm Minh Anh",
     location: "Bình Dương",
-    image: "🐓",
+    image:
+      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&h=400&fit=crop",
     tags: ["Gà to", "Sinh sản cao", "Dễ nuôi"],
   },
 ];
