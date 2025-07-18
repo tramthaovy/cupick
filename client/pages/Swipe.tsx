@@ -58,7 +58,7 @@ const animals = [
     name: "Lợn Landrace",
     breed: "Landrace",
     age: "7 tháng",
-    description: "Lợn đực giống chất lượng, t���c độ tăng trọng nhanh",
+    description: "Lợn đực giống chất lượng, tốc độ tăng trọng nhanh",
     health: "Rất tốt",
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
@@ -127,6 +127,77 @@ export default function Swipe() {
 
   const handleViewDetails = () => {
     setShowDetailModal(true);
+  };
+
+  // Touch/Mouse event handlers
+  const handleStart = (clientX: number, clientY: number) => {
+    setIsDragging(true);
+    setDragStart({ x: clientX, y: clientY });
+    setDragOffset({ x: 0, y: 0 });
+    setCardRotation(0);
+  };
+
+  const handleMove = (clientX: number, clientY: number) => {
+    if (!isDragging) return;
+
+    const deltaX = clientX - dragStart.x;
+    const deltaY = clientY - dragStart.y;
+
+    setDragOffset({ x: deltaX, y: deltaY });
+
+    // Calculate rotation based on horizontal drag
+    const rotation = (deltaX / 10) * 0.5; // Adjust multiplier for rotation sensitivity
+    setCardRotation(Math.max(-15, Math.min(15, rotation)));
+  };
+
+  const handleEnd = () => {
+    if (!isDragging) return;
+
+    setIsDragging(false);
+
+    const threshold = 100; // Minimum distance to trigger swipe
+
+    if (Math.abs(dragOffset.x) > threshold) {
+      if (dragOffset.x > 0) {
+        handleSwipe("right");
+      } else {
+        handleSwipe("left");
+      }
+    } else {
+      // Snap back to center
+      setDragOffset({ x: 0, y: 0 });
+      setCardRotation(0);
+    }
+  };
+
+  // Mouse events
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleStart(e.clientX, e.clientY);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handleMove(e.clientX, e.clientY);
+  };
+
+  const handleMouseUp = () => {
+    handleEnd();
+  };
+
+  // Touch events
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    handleStart(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent scrolling
+    const touch = e.touches[0];
+    handleMove(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchEnd = () => {
+    handleEnd();
   };
 
   if (!currentAnimal) {
