@@ -538,7 +538,7 @@ export default function Messages() {
             <DialogHeader>
               <DialogTitle>Kết thúc cuộc trò chuyện</DialogTitle>
               <DialogDescription>
-                Bạn có chắc muốn kết thúc cuộc trò chuyện với{" "}
+                Bạn có chắc mu��n kết thúc cuộc trò chuyện với{" "}
                 {selectedChat.participant.name}? Hành động này không thể hoàn
                 tác.
               </DialogDescription>
@@ -613,84 +613,198 @@ export default function Messages() {
         </div>
 
         <div className="p-4">
-          {conversations.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="h-8 w-8 text-muted-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">
-                Chưa có tin nhắn nào
-              </h3>
-              <p className="text-muted-foreground">
-                Khi có người quan tâm đến con giống của bạn, tin nhắn sẽ xuất
-                hiện ở đây
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {conversations.map((conversation) => (
-                <Card
-                  key={conversation.id}
-                  className="cursor-pointer hover:bg-muted/50 transition-colors"
-                  onClick={() => handleSelectChat(conversation)}
-                >
-                  <CardContent className="p-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="relative">
-                        <Avatar className="w-12 h-12">
-                          <AvatarFallback>
-                            {conversation.participant.avatar}
-                          </AvatarFallback>
-                        </Avatar>
-                        {conversation.isOnline && (
-                          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between mb-1">
-                          <h3 className="font-semibold truncate">
-                            {conversation.participant.name}
-                          </h3>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-xs text-muted-foreground">
-                              {conversation.timestamp}
-                            </span>
-                            {conversation.unreadCount > 0 && (
-                              <Badge
-                                variant="destructive"
-                                className="w-5 h-5 rounded-full text-xs flex items-center justify-center p-0"
-                              >
-                                {conversation.unreadCount}
-                              </Badge>
+          {/* Conversations Tab */}
+          {activeTab === "conversations" && (
+            <>
+              {conversations.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Send className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    Chưa có tin nhắn nào
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Khi có người quan tâm đến con giống của bạn, tin nhắn sẽ
+                    xuất hiện ở đây
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {conversations.map((conversation) => (
+                    <Card
+                      key={conversation.id}
+                      className="cursor-pointer hover:bg-muted/50 transition-colors"
+                      onClick={() => handleSelectChat(conversation)}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="relative">
+                            <Avatar className="w-12 h-12">
+                              <AvatarFallback>
+                                {conversation.participant.avatar}
+                              </AvatarFallback>
+                            </Avatar>
+                            {conversation.isOnline && (
+                              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white" />
                             )}
                           </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between mb-1">
+                              <h3 className="font-semibold truncate">
+                                {conversation.participant.name}
+                              </h3>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-xs text-muted-foreground">
+                                  {conversation.timestamp}
+                                </span>
+                                {conversation.unreadCount > 0 && (
+                                  <Badge
+                                    variant="destructive"
+                                    className="w-5 h-5 rounded-full text-xs flex items-center justify-center p-0"
+                                  >
+                                    {conversation.unreadCount}
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <p className="text-sm text-muted-foreground truncate">
+                                {conversation.lastMessage}
+                              </p>
+                              <Badge
+                                variant="outline"
+                                className={`text-xs ${getStatusColor(
+                                  conversation.status,
+                                )}`}
+                              >
+                                {getStatusText(conversation.status)}
+                              </Badge>
+                            </div>
+                            <div className="flex items-center space-x-2 mt-1">
+                              <Badge variant="secondary" className="text-xs">
+                                {conversation.animal}
+                              </Badge>
+                              <Badge variant="outline" className="text-xs">
+                                {conversation.participant.role}
+                              </Badge>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm text-muted-foreground truncate">
-                            {conversation.lastMessage}
-                          </p>
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${getStatusColor(
-                              conversation.status,
-                            )}`}
-                          >
-                            {getStatusText(conversation.status)}
-                          </Badge>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Matches Tab */}
+          {activeTab === "matches" && (
+            <>
+              {matchedUsers.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    Chưa có match nào
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Quẹt phải những con giống bạn thích để tạo match
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {matchedUsers.map((match) => (
+                    <Card
+                      key={match.id}
+                      className="hover:bg-muted/50 transition-colors"
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="relative">
+                            <Avatar className="w-12 h-12">
+                              <AvatarFallback>{match.avatar}</AvatarFallback>
+                            </Avatar>
+                            {match.isNew && (
+                              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-1">
+                              <h3 className="font-semibold">{match.name}</h3>
+                              <span className="text-xs text-muted-foreground">
+                                {match.matchTime}
+                              </span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <Badge variant="secondary" className="text-xs">
+                                {match.animal}
+                              </Badge>
+                              <Button
+                                size="sm"
+                                onClick={() => handleStartConversation(match)}
+                                className="h-7 text-xs"
+                              >
+                                Nhắn tin
+                              </Button>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center space-x-2 mt-1">
-                          <Badge variant="secondary" className="text-xs">
-                            {conversation.animal}
-                          </Badge>
-                          <Badge variant="outline" className="text-xs">
-                            {conversation.participant.role}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
+          {/* AI Assistant Tab */}
+          {activeTab === "ai" && (
+            <div className="space-y-4">
+              <Card className="bg-gradient-to-r from-primary/10 to-accent/10">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Bot className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">AI Assistant</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Tư vấn chăn nuôi, giá cả thị trường và kết nối phù hợp
+                  </p>
+                  <Button
+                    onClick={() => setShowAIChat(true)}
+                    className="w-full"
+                  >
+                    Bắt đầu trò chuyện
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <div className="space-y-2">
+                <h4 className="font-semibold text-sm">Gợi ý câu hỏi:</h4>
+                <div className="space-y-2">
+                  {[
+                    "Giá lợn giống hiện tại như thế nào?",
+                    "Cách chọn bò giống chất lượng?",
+                    "Kỹ thuật nuôi gà thả vườn?",
+                    "Tìm người bán uy tín trong khu vực",
+                  ].map((question, index) => (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      size="sm"
+                      className="w-full justify-start text-left h-auto py-2 px-3"
+                      onClick={() => {
+                        setAiInput(question);
+                        setShowAIChat(true);
+                      }}
+                    >
+                      {question}
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
         </div>
