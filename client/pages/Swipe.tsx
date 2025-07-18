@@ -37,7 +37,7 @@ const animals = [
     description: "Lợn giống cao sản, phù hợp nuôi thương phẩm",
     health: "Rất tốt",
     price: "8.500.000 VND",
-    owner: "Trang trại Hòa B��nh",
+    owner: "Trang tr���i Hòa Bình",
     location: "Đồng Nai",
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
@@ -354,20 +354,21 @@ export default function Swipe() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Sức khỏe:</span>
+                  <span className="text-white/80">Sức khỏe:</span>
                   <Badge
                     variant={
                       currentAnimal.health === "Rất tốt"
                         ? "default"
                         : "secondary"
                     }
+                    className="bg-white/90 text-black"
                   >
                     {currentAnimal.health}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Giá:</span>
-                  <span className="font-semibold text-primary">
+                  <span className="text-white/80">Giá:</span>
+                  <span className="font-semibold text-green-400">
                     {currentAnimal.price}
                   </span>
                 </div>
@@ -377,9 +378,11 @@ export default function Swipe() {
                       {currentAnimal.owner.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="font-medium">{currentAnimal.owner}</span>
+                  <span className="font-medium text-white">
+                    {currentAnimal.owner}
+                  </span>
                 </div>
-                <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-1 text-sm text-white/80">
                   <MapPin className="h-3 w-3" />
                   <span>{currentAnimal.location}</span>
                 </div>
