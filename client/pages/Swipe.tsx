@@ -236,7 +236,7 @@ export default function Swipe() {
                 variant="ghost"
                 size="sm"
                 className="text-white hover:bg-white/20"
-                onClick={() => setShowNotifications(true)}
+                                onClick={() => navigate("/notifications")}
               >
                 <Bell className="h-5 w-5" />
               </Button>
