@@ -218,7 +218,7 @@ export default function Swipe() {
               Không còn con giống nào
             </h2>
             <p className="text-muted-foreground">
-              Hãy quay lại sau để xem thêm
+              Hãy quay l��i sau để xem thêm
             </p>
           </div>
         </div>
@@ -331,7 +331,9 @@ export default function Swipe() {
 
             {/* Content */}
             <CardHeader className="relative z-10 text-center pb-4">
-              <CardTitle className="text-xl">{currentAnimal.name}</CardTitle>
+              <CardTitle className="text-xl text-white drop-shadow-lg bg-black/50 rounded-lg p-2">
+                {currentAnimal.name}
+              </CardTitle>
               <div className="flex items-center justify-center space-x-1 mt-2">
                 <Badge variant="secondary">{currentAnimal.breed}</Badge>
                 <Badge variant="outline">{currentAnimal.age}</Badge>
