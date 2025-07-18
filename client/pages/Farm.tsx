@@ -105,6 +105,7 @@ const animals = [
 ];
 
 export default function Farm() {
+  const navigate = useNavigate();
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
@@ -618,7 +619,7 @@ export default function Farm() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="editDescription">Mô tả</Label>
+                  <Label htmlFor="editDescription">M�� tả</Label>
                   <Textarea
                     id="editDescription"
                     value={newAnimal.description}
