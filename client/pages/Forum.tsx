@@ -116,7 +116,7 @@ const posts = [
     likes: 45,
     comments: 12,
     views: 298,
-    timeAgo: "4 giờ trư���c",
+    timeAgo: "4 giờ trước",
     isLiked: true,
   },
   {
@@ -148,9 +148,24 @@ export default function Forum() {
   });
 
   const filteredPosts = posts.filter((post) => {
-    if (selectedView === "all") return true;
-    const topic = topics.find((t) => t.id.toString() === selectedView);
-    return topic && post.topic === topic.name;
+    // Filter by selected topic
+    let matchesTopic = true;
+    if (selectedView !== "all") {
+      const topic = topics.find((t) => t.id.toString() === selectedView);
+      matchesTopic = topic && post.topic === topic.name;
+    }
+
+    // Filter by search query
+    let matchesSearch = true;
+    if (searchQuery.trim()) {
+      const searchLower = searchQuery.toLowerCase();
+      matchesSearch =
+        post.title.toLowerCase().includes(searchLower) ||
+        post.topic.toLowerCase().includes(searchLower) ||
+        post.author.name.toLowerCase().includes(searchLower);
+    }
+
+    return matchesTopic && matchesSearch;
   });
 
   const handleCreatePost = () => {
