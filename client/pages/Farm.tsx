@@ -97,7 +97,7 @@ const animals = [
       "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop",
     swipes: 18,
     matches: 1,
-    description: "Gà giống to khỏe, kh��� năng sinh sản cao",
+    description: "Gà giống to khỏe, khả năng sinh sản cao",
     weight: "3.5kg",
     location: "Bình Dương",
   },
@@ -214,7 +214,7 @@ export default function Farm() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Theo d��i và quản lý con giống của bạn
+            Theo d���i và quản lý con giống của bạn
           </p>
         </div>
 
@@ -273,8 +273,17 @@ export default function Farm() {
               <Card key={animal.id}>
                 <CardContent className="p-4">
                   <div className="flex items-start space-x-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center">
-                      <span className="text-2xl">{animal.image}</span>
+                    <div className="w-16 h-16 rounded-xl overflow-hidden">
+                      <img
+                        src={animal.image}
+                        alt={animal.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src =
+                            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNCAzMkgxNlYyNEg0OFY0MEg0MFYzMkgzMlYyNEgyNFYzMloiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                        }}
+                      />
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="flex items-start justify-between">
