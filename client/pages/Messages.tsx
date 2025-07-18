@@ -155,6 +155,7 @@ const chatMessages = [
 ];
 
 export default function Messages() {
+  const navigate = useNavigate();
   const [selectedChat, setSelectedChat] = useState<any>(null);
   const [newMessage, setNewMessage] = useState("");
   const [showBlockDialog, setShowBlockDialog] = useState(false);
@@ -167,7 +168,7 @@ export default function Messages() {
     {
       id: 1,
       content:
-        "Xin chào! Tôi là AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
+        "Xin chào! Tôi là AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ tr�� gì?",
       isBot: true,
       timestamp: "Bây giờ",
     },
