@@ -54,6 +54,7 @@ const animals = [
 ];
 
 export default function SwipeNew() {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showMatch, setShowMatch] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
