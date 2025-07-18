@@ -39,7 +39,7 @@ const animals = [
     owner: "Trang trại Hòa Bình",
     location: "Đồng Nai",
     image: "🐷",
-    tags: ["Cao sản", "Thương phẩm", "Khỏe mạnh"],
+    tags: ["Cao sản", "Th��ơng phẩm", "Khỏe mạnh"],
   },
   {
     id: 3,
@@ -95,6 +95,7 @@ export default function Swipe() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [cardRotation, setCardRotation] = useState(0);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const currentAnimal = animals[currentIndex];
 
