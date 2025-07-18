@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Heart, X, Eye, MapPin, Calendar } from "lucide-react";
+import { Heart, X, Eye, MapPin, Calendar, Bell } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 
 // Sample animal data
