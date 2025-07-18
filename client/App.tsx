@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RoleSelection from "./pages/RoleSelection";
 import ProfileSetup from "./pages/ProfileSetup";
-import Swipe from "./pages/Swipe";
+import Swipe from "./pages/SwipeNew";
 import Farm from "./pages/Farm";
 import Forum from "./pages/Forum";
 import Messages from "./pages/Messages";
