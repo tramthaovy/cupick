@@ -201,25 +201,15 @@ export default function Forum() {
         <div className="bg-white border-b border-border p-4">
           <div className="flex items-center justify-between mb-3">
             <h1 className="text-2xl font-bold text-primary">Forum</h1>
-            <div className="flex items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  alert("Thông báo sẽ được hiển thị ở đây");
-                }}
-              >
-                <Bell className="h-4 w-4" />
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => setShowCreatePost(true)}
-                className="h-9"
-              >
-                <Plus className="h-4 w-4 mr-1" />
-                Tạo bài
-              </Button>
-            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                alert("Thông báo sẽ được hiển thị ở đây");
+              }}
+            >
+              <Bell className="h-4 w-4" />
+            </Button>
           </div>
 
           {/* Search Bar */}
