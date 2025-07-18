@@ -184,9 +184,10 @@ export default function SwipeNew() {
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/notifications")}
-                className="w-10 h-10 rounded-full p-0"
+                className="w-10 h-10 rounded-full p-0 relative"
               >
                 <Bell className="h-5 w-5" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
               </Button>
               <Button
                 variant="ghost"
