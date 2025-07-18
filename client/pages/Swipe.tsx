@@ -331,9 +331,6 @@ export default function Swipe() {
 
             {/* Content */}
             <CardHeader className="relative z-10 text-center pb-4">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <span className="text-4xl">{currentAnimal.image}</span>
-              </div>
               <CardTitle className="text-xl">{currentAnimal.name}</CardTitle>
               <div className="flex items-center justify-center space-x-1 mt-2">
                 <Badge variant="secondary">{currentAnimal.breed}</Badge>
