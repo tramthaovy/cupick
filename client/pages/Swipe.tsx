@@ -37,7 +37,7 @@ const animals = [
     description: "Lợn giống cao sản, phù hợp nuôi thương phẩm",
     health: "Rất tốt",
     price: "8.500.000 VND",
-    owner: "Trang tr���i Hòa Bình",
+    owner: "Trang trại Hòa Bình",
     location: "Đồng Nai",
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
@@ -391,7 +391,7 @@ export default function Swipe() {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full"
+                className="w-full bg-white/10 border-white/30 text-white hover:bg-white/20"
                 onClick={handleViewDetails}
               >
                 <Eye className="h-4 w-4 mr-2" />
