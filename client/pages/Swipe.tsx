@@ -111,16 +111,29 @@ export default function Swipe() {
               <h1 className="text-xl font-bold">Cupick</h1>
               <p className="text-sm opacity-90">Tìm con giống phù hợp</p>
             </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => {
-                // Navigate to profile or stop swiping
-                window.location.href = "/profile";
-              }}
-            >
-              Dừng quẹt
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-white/20"
+                onClick={() => {
+                  // Show notifications
+                  alert("Thông báo sẽ được hiển thị ở đây");
+                }}
+              >
+                <Bell className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  // Navigate to profile or stop swiping
+                  window.location.href = "/profile";
+                }}
+              >
+                Dừng quẹt
+              </Button>
+            </div>
           </div>
         </div>
 
