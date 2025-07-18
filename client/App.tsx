@@ -43,6 +43,7 @@ const App = () => (
           <Route path="/forum" element={<Forum />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/notifications" element={<Notifications />} />
 
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
