@@ -25,8 +25,7 @@ const animals = [
     price: "45.000.000 VND",
     owner: "Trại Thành Đạt",
     location: "Long An",
-    image:
-      "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&h=400&fit=crop",
     tags: ["Giống nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
   },
   {
@@ -39,8 +38,7 @@ const animals = [
     price: "8.500.000 VND",
     owner: "Trang trại Hòa Bình",
     location: "Đồng Nai",
-    image:
-      "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=400&fit=crop",
     tags: ["Cao sản", "Thương phẩm", "Khỏe mạnh"],
   },
   {
@@ -53,8 +51,7 @@ const animals = [
     price: "12.000.000 VND",
     owner: "Trại chăn nuôi Phước An",
     location: "Tiền Giang",
-    image:
-      "https://images.unsplash.com/photo-1573160103600-1eba0c5c8763?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1573160103600-1eba0c5c8763?w=600&h=400&fit=crop",
     tags: ["Nái giống", "Sinh sản cao", "Thuần chủng"],
   },
   {
@@ -67,8 +64,7 @@ const animals = [
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
     location: "An Giang",
-    image:
-      "https://images.unsplash.com/photo-1518492104633-130d0b3fd5bc?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1518492104633-130d0b3fd5bc?w=600&h=400&fit=crop",
     tags: ["Đực giống", "Tăng trọng nhanh", "Chất lượng"],
   },
   {
@@ -81,8 +77,7 @@ const animals = [
     price: "450.000 VND",
     owner: "Trại gia cầm Minh Anh",
     location: "Bình Dương",
-    image:
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&h=400&fit=crop",
     tags: ["Gà to", "Sinh sản cao", "Dễ nuôi"],
   },
 ];
@@ -91,20 +86,18 @@ export default function Swipe() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showMatch, setShowMatch] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
-  const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(
-    null,
-  );
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
 
   // Drag/swipe state
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [cardRotation, setCardRotation] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
 
   const currentAnimal = animals[currentIndex];
 
-  const handleSwipe = (direction: "left" | "right") => {
+      const handleSwipe = (direction: "left" | "right") => {
     setSwipeDirection(direction);
     setDragOffset({ x: 0, y: 0 });
     setCardRotation(0);
@@ -134,7 +127,7 @@ export default function Swipe() {
     }
   };
 
-  const handleViewDetails = () => {
+    const handleViewDetails = () => {
     setShowDetailModal(true);
   };
 
@@ -229,7 +222,7 @@ export default function Swipe() {
   return (
     <MobileLayout>
       <div className="relative h-[calc(100vh-80px)] overflow-hidden">
-        {/* Header */}
+                {/* Header */}
         <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/50 to-transparent">
           <div className="flex items-center justify-between">
             <div className="text-white">
@@ -237,7 +230,7 @@ export default function Swipe() {
               <p className="text-sm opacity-90">Tìm con giống phù hợp</p>
             </div>
             <div className="flex items-center space-x-2">
-              <Button
+                            <Button
                 variant="ghost"
                 size="sm"
                 className="text-white hover:bg-white/20"
@@ -259,29 +252,23 @@ export default function Swipe() {
           </div>
         </div>
 
-        {/* Animal Card */}
-        <div className="h-full flex items-center justify-center p-4">
-          <Card
-            className={`w-full max-w-sm h-[600px] relative overflow-hidden shadow-2xl cursor-grab select-none ${
-              isDragging ? "cursor-grabbing" : ""
+                        {/* Animal Card */}
+                <div className="absolute inset-0 top-16 bottom-20">
+          <div
+            className={`w-full h-full relative overflow-hidden cursor-grab select-none ${
+              isDragging ? 'cursor-grabbing' : ''
             } ${
-              swipeDirection === "left"
-                ? "transition-transform duration-300 transform -translate-x-full rotate-12"
-                : swipeDirection === "right"
-                  ? "transition-transform duration-300 transform translate-x-full rotate-12"
-                  : isDragging
-                    ? ""
-                    : "transition-all duration-200"
+              swipeDirection === 'left' ? 'transition-transform duration-300 transform -translate-x-full rotate-12' :
+              swipeDirection === 'right' ? 'transition-transform duration-300 transform translate-x-full rotate-12' :
+              isDragging ? '' : 'transition-all duration-200'
             }`}
             style={{
               transform: isDragging
                 ? `translate(${dragOffset.x}px, ${dragOffset.y}px) rotate(${cardRotation}deg)`
                 : swipeDirection
-                  ? undefined
-                  : "translate(0px, 0px) rotate(0deg)",
-              opacity: isDragging
-                ? Math.max(0.7, 1 - Math.abs(dragOffset.x) / 300)
-                : 1,
+                ? undefined
+                : 'translate(0px, 0px) rotate(0deg)',
+              opacity: isDragging ? Math.max(0.7, 1 - Math.abs(dragOffset.x) / 300) : 1,
             }}
             onMouseDown={handleMouseDown}
             onMouseMove={isDragging ? handleMouseMove : undefined}
@@ -291,7 +278,7 @@ export default function Swipe() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Background with animal image */}
+                                    {/* Background with animal image */}
             <div className="absolute inset-0">
               <img
                 src={currentAnimal.image}
@@ -299,8 +286,7 @@ export default function Swipe() {
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src =
-                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDQwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTAgMzAwSDEwMFYyNTBIMzAwVjM1MEgyNTBWMzAwSDIwMFYyNTBIMTUwVjMwMFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                  target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDQwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTAgMzAwSDEwMFYyNTBIMzAwVjM1MEgyNTBWMzAwSDIwMFYyNTBIMTUwVjMwMFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
@@ -310,20 +296,16 @@ export default function Swipe() {
             {isDragging && (
               <>
                 {/* Like indicator (right swipe) */}
-                <div
-                  className={`absolute top-8 right-8 bg-green-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform rotate-12 transition-opacity ${
-                    dragOffset.x > 50 ? "opacity-100" : "opacity-0"
-                  }`}
-                >
+                <div className={`absolute top-8 right-8 bg-green-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform rotate-12 transition-opacity ${
+                  dragOffset.x > 50 ? 'opacity-100' : 'opacity-0'
+                }`}>
                   THÍCH ❤️
                 </div>
 
                 {/* Pass indicator (left swipe) */}
-                <div
-                  className={`absolute top-8 left-8 bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform -rotate-12 transition-opacity ${
-                    dragOffset.x < -50 ? "opacity-100" : "opacity-0"
-                  }`}
-                >
+                <div className={`absolute top-8 left-8 bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform -rotate-12 transition-opacity ${
+                  dragOffset.x < -50 ? 'opacity-100' : 'opacity-0'
+                }`}>
                   BỎ QUA ✕
                 </div>
               </>
@@ -331,28 +313,26 @@ export default function Swipe() {
 
             {/* Content */}
             <CardHeader className="relative z-10 text-center pb-4">
-              <CardTitle className="text-xl text-white drop-shadow-lg bg-black/50 rounded-lg p-2">
+              
+                                          <CardTitle className="text-xl text-white drop-shadow-lg bg-black/50 rounded-lg p-2">
                 {currentAnimal.name}
               </CardTitle>
-              <div className="flex items-center justify-center space-x-1 mt-2">
+                            <div className="flex items-center justify-center space-x-1 mt-2">
                 <Badge variant="secondary" className="bg-white/90 text-black">
                   {currentAnimal.breed}
                 </Badge>
-                <Badge
-                  variant="outline"
-                  className="bg-white/20 text-white border-white/50"
-                >
+                <Badge variant="outline" className="bg-white/20 text-white border-white/50">
                   {currentAnimal.age}
                 </Badge>
               </div>
             </CardHeader>
 
-            <CardContent className="relative z-10 space-y-4 bg-black/50 rounded-lg p-4 m-4">
+                        <CardContent className="relative z-10 space-y-4 bg-black/50 rounded-lg p-4 m-4">
               <p className="text-sm text-center text-white">
                 {currentAnimal.description}
               </p>
 
-              <div className="space-y-2">
+                            <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-white/80">Sức khỏe:</span>
                   <Badge
@@ -378,9 +358,7 @@ export default function Swipe() {
                       {currentAnimal.owner.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="font-medium text-white">
-                    {currentAnimal.owner}
-                  </span>
+                  <span className="font-medium text-white">{currentAnimal.owner}</span>
                 </div>
                 <div className="flex items-center space-x-1 text-sm text-white/80">
                   <MapPin className="h-3 w-3" />
@@ -388,7 +366,7 @@ export default function Swipe() {
                 </div>
               </div>
 
-              <Button
+                            <Button
                 variant="outline"
                 size="sm"
                 className="w-full bg-white/10 border-white/30 text-white hover:bg-white/20"
@@ -422,7 +400,7 @@ export default function Swipe() {
           </div>
         </div>
 
-        {/* Match Popup */}
+                {/* Match Popup */}
         {showMatch && (
           <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-50">
             <div className="bg-background rounded-3xl p-8 text-center max-w-sm mx-4 shadow-2xl">
@@ -461,7 +439,7 @@ export default function Swipe() {
               </div>
 
               <div className="space-y-4">
-                <div className="text-center">
+                                <div className="text-center">
                   <div className="w-24 h-24 rounded-xl overflow-hidden mx-auto mb-3">
                     <img
                       src={currentAnimal.image}
@@ -469,8 +447,7 @@ export default function Swipe() {
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src =
-                          "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0zNiA0OEgyNFYzNkg3MlY2MEg2MFY0OEg0OFYzNkgzNlY0OFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                        target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0zNiA0OEgyNFYzNkg3MlY2MEg2MFY0OEg0OFYzNkgzNlY0OFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
                       }}
                     />
                   </div>
@@ -493,11 +470,7 @@ export default function Swipe() {
                     <h4 className="font-semibold mb-2">Đặc điểm</h4>
                     <div className="flex flex-wrap gap-1">
                       {currentAnimal.tags.map((tag, index) => (
-                        <Badge
-                          key={index}
-                          variant="outline"
-                          className="text-xs"
-                        >
+                        <Badge key={index} variant="outline" className="text-xs">
                           {tag}
                         </Badge>
                       ))}
@@ -567,7 +540,7 @@ export default function Swipe() {
                   </Button>
                 </div>
               </div>
-            </div>
+                        </div>
           </div>
         )}
 
