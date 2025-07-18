@@ -214,8 +214,10 @@ export default function Forum() {
               variant="ghost"
               size="sm"
               onClick={() => navigate("/notifications")}
+              className="relative"
             >
               <Bell className="h-4 w-4" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
             </Button>
           </div>
 
