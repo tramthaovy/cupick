@@ -316,42 +316,24 @@ export default function SwipeNew() {
           </div>
         </div>
 
-        {/* Action Buttons - Tinder style */}
+        {/* Action Buttons - Simplified */}
         <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-          <div className="flex items-center justify-center space-x-8 py-4">
+          <div className="flex items-center justify-center space-x-12 py-6">
             <Button
               size="lg"
               variant="outline"
-              className="w-14 h-14 rounded-full border-2 border-gray-300 hover:border-red-400 hover:bg-red-50"
+              className="w-16 h-16 rounded-full border-2 border-gray-300 hover:border-red-400 hover:bg-red-50"
               onClick={() => handleSwipe("left")}
             >
-              <X className="h-6 w-6 text-red-500" />
+              <X className="h-7 w-7 text-red-500" />
             </Button>
 
             <Button
               size="lg"
-              variant="outline"
-              className="w-12 h-12 rounded-full border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50"
-              onClick={() => setShowDetailModal(true)}
-            >
-              <Star className="h-5 w-5 text-blue-500" />
-            </Button>
-
-            <Button
-              size="lg"
-              className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 border-0"
+              className="w-16 h-16 rounded-full bg-green-500 hover:bg-green-600 border-0"
               onClick={() => handleSwipe("right")}
             >
-              <Heart className="h-6 w-6 text-white" />
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-12 h-12 rounded-full border-2 border-gray-300 hover:border-purple-400 hover:bg-purple-50"
-              onClick={() => alert("Boost feature coming soon!")}
-            >
-              <MessageCircle className="h-5 w-5 text-purple-500" />
+              <Heart className="h-7 w-7 text-white" />
             </Button>
           </div>
         </div>
