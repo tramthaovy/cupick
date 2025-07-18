@@ -77,7 +77,7 @@ const conversations = [
       role: "Người cho", // seller
     },
     animal: "Bò Wagyu A5",
-    lastMessage: "Bò này còn không anh?",
+    lastMessage: "Bò này còn kh��ng anh?",
     timestamp: "10:30",
     unreadCount: 2,
     status: "accepted", // accepted, pending, expired
@@ -179,10 +179,45 @@ export default function Messages() {
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      console.log("Sending message:", newMessage);
-      // In real app, this would send to API
+      // Add message to chat (simulate)
+      const newMsg = {
+        id: chatMessages.length + 1,
+        senderId: 1,
+        senderName: "Tôi",
+        content: newMessage,
+        timestamp: "Bây giờ",
+        type: "text",
+        status: "delivered",
+      };
+      chatMessages.push(newMsg);
+      console.log("Message sent:", newMessage);
       setNewMessage("");
     }
+  };
+
+  const handleSendImage = () => {
+    // Simulate image upload
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e: any) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Simulate sending image
+        const newMsg = {
+          id: chatMessages.length + 1,
+          senderId: 1,
+          senderName: "Tôi",
+          content: `[Hình ảnh: ${file.name}]`,
+          timestamp: "Bây giờ",
+          type: "image",
+          status: "delivered",
+        };
+        chatMessages.push(newMsg);
+        console.log("Image sent:", file.name);
+      }
+    };
+    input.click();
   };
 
   const handleSendAIMessage = () => {
@@ -538,7 +573,7 @@ export default function Messages() {
             <DialogHeader>
               <DialogTitle>Kết thúc cuộc trò chuyện</DialogTitle>
               <DialogDescription>
-                Bạn có chắc mu��n kết thúc cuộc trò chuyện với{" "}
+                Bạn có chắc muốn kết thúc cuộc trò chuyện với{" "}
                 {selectedChat.participant.name}? Hành động này không thể hoàn
                 tác.
               </DialogDescription>
