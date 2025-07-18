@@ -40,6 +40,7 @@ import {
   Bell,
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
+import NotificationModal from "@/components/NotificationModal";
 
 // Sample topics data
 const topics = [
@@ -210,7 +211,7 @@ export default function Forum() {
               variant="ghost"
               size="sm"
               onClick={() => {
-                alert("Thông báo sẽ được hiển th�� ở đây");
+                alert("Thông báo sẽ được hiển thị ở đây");
               }}
             >
               <Bell className="h-4 w-4" />
