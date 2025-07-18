@@ -238,7 +238,7 @@ export default function Messages() {
       setTimeout(() => {
         const responses = [
           "Tôi hiểu bạn quan tâm về vấn đề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
-          "Về giá cả hiện tại, thị trường đang có xu hướng tăng nhẹ. Bạn có thể tham khảo...",
+          "Về giá cả hiện tại, thị trường đang có xu hư���ng tăng nhẹ. Bạn có thể tham khảo...",
           "Để chọn con giống tốt, bạn cần chú ý đến sức khỏe, nguồn gốc và độ tuổi...",
           "Tôi có thể giúp bạn kết nối với những người bán uy tín trong khu vực của bạn.",
         ];
@@ -608,8 +608,10 @@ export default function Messages() {
               variant="ghost"
               size="sm"
               onClick={() => navigate("/notifications")}
+              className="relative"
             >
               <Bell className="h-5 w-5" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
