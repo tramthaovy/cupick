@@ -60,7 +60,7 @@ const animals = [
     breed: "Landrace",
     age: "7 tháng",
     description: "Lợn đực giống chất lượng, tốc độ tăng trọng nhanh",
-    health: "Rất t��t",
+    health: "Rất tốt",
     price: "9.200.000 VND",
     owner: "Trang trại Minh Phát",
     location: "An Giang",
@@ -325,9 +325,75 @@ export default function Swipe() {
                   {currentAnimal.age}
                 </Badge>
               </div>
-            </CardHeader>
+            
+            {/* Animal info overlay - positioned at bottom */}
+            <div className="absolute bottom-6 left-4 right-4">
+              <div className="bg-black/70 rounded-2xl p-4 backdrop-blur-sm">
+                <h2 className="text-2xl font-bold text-white mb-2">{currentAnimal.name}</h2>
+                <div className="flex items-center space-x-2 mb-3">
+                  <Badge variant="secondary" className="bg-white/90 text-black">
+                    {currentAnimal.breed}
+                  </Badge>
+                  <Badge variant="outline" className="bg-white/20 text-white border-white/50">
+                    {currentAnimal.age}
+                  </Badge>
+                </div>
+                <p className="text-sm text-white/90 mb-3">
+                  {currentAnimal.description}
+                </p>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <span className="text-white/70">Sức khỏe:</span>
+                    <div className="mt-1">
+                      <Badge
+                        variant={currentAnimal.health === "Rất tốt" ? "default" : "secondary"}
+                        className="bg-white/90 text-black"
+                      >
+                        {currentAnimal.health}
+                      </Badge>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-white/70">Giá:</span>
+                    <div className="mt-1 font-bold text-green-400">
+                      {currentAnimal.price}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                        <CardContent className="relative z-10 space-y-4 bg-black/50 rounded-lg p-4 m-4">
+            {/* Minimal info overlay - like Tinder */}
+            <div className="absolute bottom-24 left-4">
+              <div className="space-y-1">
+                <h2 className="text-3xl font-bold text-white drop-shadow-lg">
+                  {currentAnimal.name}
+                </h2>
+                <div className="flex items-center space-x-2">
+                  <span className="text-white/90 text-lg">{currentAnimal.breed}</span>
+                  <span className="text-white/70">•</span>
+                  <span className="text-white/90 text-lg">{currentAnimal.age}</span>
+                </div>
+                <div className="flex items-center space-x-1 text-white/70">
+                  <MapPin className="h-4 w-4" />
+                  <span>{currentAnimal.location}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick action buttons on image */}
+            <div className="absolute top-4 right-4 space-y-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-10 h-10 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 p-0"
+                onClick={handleViewDetails}
+              >
+                <Eye className="h-4 w-4" />
+              </Button>
+            </div>
+
+            <div className="hidden">
               <p className="text-sm text-center text-white">
                 {currentAnimal.description}
               </p>
