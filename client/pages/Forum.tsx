@@ -72,7 +72,7 @@ const topics = [
   {
     id: 4,
     name: "Thị trường",
-    description: "Thông tin giá cả và thị trường",
+    description: "Thông tin giá cả và thị trư��ng",
     icon: "📈",
     postCount: 34,
     color: "bg-purple-100 text-purple-700",
@@ -243,27 +243,28 @@ export default function Forum() {
                 style={{ minWidth: "max-content" }}
               >
                 <Card
-                  className={`cursor-pointer transition-all ${
+                  className={`cursor-pointer transition-all flex-shrink-0 w-48 ${
                     selectedView === "all"
                       ? "ring-2 ring-primary bg-primary/5"
                       : "hover:bg-muted/50"
                   }`}
                   onClick={() => setSelectedView("all")}
                 >
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold">All</span>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">Tất cả bài viết</h3>
-                          <p className="text-sm text-muted-foreground">
-                            Xem tất cả chủ đề
-                          </p>
-                        </div>
+                  <CardContent className="p-3">
+                    <div className="text-center space-y-2">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mx-auto">
+                        <span className="text-white font-bold text-sm">
+                          All
+                        </span>
                       </div>
-                      <Badge variant="secondary">{posts.length}</Badge>
+                      <div>
+                        <h3 className="font-semibold text-sm">
+                          Tất cả bài viết
+                        </h3>
+                        <Badge variant="secondary" className="text-xs mt-1">
+                          {posts.length}
+                        </Badge>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
