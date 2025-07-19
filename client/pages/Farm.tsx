@@ -185,21 +185,6 @@ export default function Farm() {
     return animals.filter((animal) => animal.species === selectedCategory);
   };
 
-  const handleAddAnimal = () => {
-    console.log("Adding animal:", newAnimal);
-    setShowAddDialog(false);
-    setNewAnimal({
-      name: "",
-      species: "",
-      breed: "",
-      age: "",
-      description: "",
-      health: "",
-      price: "",
-      weight: "",
-    });
-  };
-
   const handleEditAnimal = (animal: any) => {
     navigate(`/farm/edit/${animal.id}`);
   };
@@ -591,7 +576,7 @@ export default function Farm() {
                 </div>
 
                 <div>
-                  <Label htmlFor="health">Tình tr��ng sức khỏe</Label>
+                  <Label htmlFor="health">Tình trạng sức khỏe</Label>
                   <Select
                     value={newAnimal.health}
                     onValueChange={(value) =>
