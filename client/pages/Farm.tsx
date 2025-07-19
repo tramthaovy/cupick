@@ -478,10 +478,10 @@ export default function Farm() {
         {/* Fixed Add Animal Button */}
         <Button
           onClick={() => setShowAddDialog(true)}
-          size="lg"
-          className="fixed bottom-24 left-4 w-14 h-14 rounded-full shadow-lg z-10"
+          className="fixed bottom-24 right-4 shadow-lg z-10 h-12 px-4 rounded-full"
         >
-          <Plus className="h-6 w-6" />
+          <Plus className="h-5 w-5 mr-2" />
+          Thêm con vật
         </Button>
 
         {/* Add Animal Dialog */}
