@@ -381,6 +381,40 @@ export default function Messages() {
             ))}
           </div>
 
+          {/* Suggested Messages */}
+          {aiMessages.length === 1 && (
+            <div className="border-t border-border p-4 bg-muted/30">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">
+                  Gợi ý câu hỏi:
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Giá lợn giống hiện tại?",
+                    "Cách chọn bò giống tốt?",
+                    "Kỹ thuật nuôi gà thả vườn?",
+                    "Tìm người bán uy tín gần đây?",
+                    "Phòng bệnh cho gia súc?",
+                    "Thức ăn chăn nuôi chất lượng?",
+                  ].map((suggestion, index) => (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      size="sm"
+                      className="h-8 text-xs hover:bg-primary hover:text-white"
+                      onClick={() => {
+                        setAiInput(suggestion);
+                        handleSendAIMessage();
+                      }}
+                    >
+                      {suggestion}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* AI Message Input */}
           <div className="border-t border-border p-4">
             <div className="flex items-center space-x-2">
