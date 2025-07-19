@@ -13,6 +13,8 @@ import RoleSelection from "./pages/RoleSelection";
 import ProfileSetup from "./pages/ProfileSetup";
 import Swipe from "./pages/SwipeNew";
 import Farm from "./pages/Farm";
+import AddAnimal from "./pages/AddAnimal";
+import EditAnimal from "./pages/EditAnimal";
 import Forum from "./pages/Forum";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
