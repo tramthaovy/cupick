@@ -38,6 +38,7 @@ import {
   BarChart3,
   Camera,
   Bell,
+  ArrowLeft,
 } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 import { useNavigate } from "react-router-dom";
