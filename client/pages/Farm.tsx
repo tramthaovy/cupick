@@ -99,7 +99,7 @@ const animals = [
       "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop",
     swipes: 18,
     matches: 1,
-    description: "Gà giống to khỏe, khả năng sinh sản cao",
+    description: "Gà giống to kh��e, khả năng sinh sản cao",
     weight: "3.5kg",
     location: "Bình Dương",
   },
@@ -213,18 +213,7 @@ export default function Farm() {
   };
 
   const handleEditAnimal = (animal: any) => {
-    setSelectedAnimal(animal);
-    setNewAnimal({
-      name: animal.name,
-      species: animal.species,
-      breed: animal.breed,
-      age: animal.age,
-      description: animal.description,
-      health: animal.health,
-      price: animal.price,
-      weight: animal.weight,
-    });
-    setShowEditDialog(true);
+    navigate(`/farm/edit/${animal.id}`);
   };
 
   const handleUpdateAnimal = () => {
@@ -776,7 +765,7 @@ export default function Farm() {
                 </div>
 
                 <div>
-                  <Label htmlFor="edit-price">Gi�� bán</Label>
+                  <Label htmlFor="edit-price">Giá bán</Label>
                   <Input
                     id="edit-price"
                     value={newAnimal.price}
