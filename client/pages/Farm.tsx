@@ -110,6 +110,7 @@ export default function Farm() {
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [newAnimal, setNewAnimal] = useState({
     name: "",
     species: "",
