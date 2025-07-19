@@ -39,7 +39,7 @@ const animals = [
       rating: 4.8,
       totalAnimals: 50,
       verified: true,
-      bio: "Chuyên cung cấp bò giống chất lượng cao với 15 năm kinh nghiệm trong ngành chăn nuôi.",
+      bio: "Chuyên cung cấp bò giống chất lượng cao với 15 năm kinh nghiệm trong ngành chăn nu��i.",
     },
   },
   {
@@ -456,6 +456,99 @@ export default function SwipeNew() {
             </div>
           </div>
         )}
+
+        {/* Owner Profile Modal */}
+        <Dialog open={showOwnerProfile} onOpenChange={setShowOwnerProfile}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Thông tin chủ nuôi</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-6">
+              {/* Owner Header */}
+              <div className="flex items-center space-x-4">
+                <Avatar className="w-20 h-20">
+                  <AvatarImage
+                    src={currentAnimal.ownerInfo.avatar}
+                    alt={currentAnimal.ownerInfo.name}
+                  />
+                  <AvatarFallback className="text-lg">
+                    {currentAnimal.ownerInfo.name.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-1">
+                    <h2 className="text-xl font-bold">
+                      {currentAnimal.ownerInfo.name}
+                    </h2>
+                    {currentAnimal.ownerInfo.verified && (
+                      <Shield className="h-5 w-5 text-blue-500" />
+                    )}
+                  </div>
+                  <p className="text-gray-600 font-medium">
+                    {currentAnimal.ownerInfo.farmName}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {currentAnimal.ownerInfo.location}
+                  </p>
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center">
+                  <div className="flex items-center justify-center space-x-1 mb-1">
+                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                    <span className="font-bold text-lg">
+                      {currentAnimal.ownerInfo.rating}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500">Đánh giá</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center space-x-1 mb-1">
+                    <Users className="h-4 w-4 text-blue-500" />
+                    <span className="font-bold text-lg">
+                      {currentAnimal.ownerInfo.totalAnimals}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500">Con vật</p>
+                </div>
+                <div className="text-center">
+                  <div className="mb-1">
+                    <span className="font-bold text-lg">
+                      {currentAnimal.ownerInfo.experience.split(" ")[0]}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500">Năm kinh nghiệm</p>
+                </div>
+              </div>
+
+              {/* Speciality */}
+              <div>
+                <h3 className="font-semibold mb-2">Chuyên môn</h3>
+                <Badge variant="secondary" className="text-sm">
+                  {currentAnimal.ownerInfo.speciality}
+                </Badge>
+              </div>
+
+              {/* Bio */}
+              <div>
+                <h3 className="font-semibold mb-2">Giới thiệu</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {currentAnimal.ownerInfo.bio}
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex space-x-3">
+                <Button variant="outline" className="flex-1">
+                  Xem trang trại
+                </Button>
+                <Button className="flex-1">Nhắn tin</Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Notification Modal */}
         <NotificationModal
