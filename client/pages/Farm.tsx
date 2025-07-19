@@ -189,22 +189,6 @@ export default function Farm() {
     navigate(`/farm/edit/${animal.id}`);
   };
 
-  const handleUpdateAnimal = () => {
-    console.log("Updating animal:", selectedAnimal.id, newAnimal);
-    setShowEditDialog(false);
-    setSelectedAnimal(null);
-    setNewAnimal({
-      name: "",
-      species: "",
-      breed: "",
-      age: "",
-      description: "",
-      health: "",
-      price: "",
-      weight: "",
-    });
-  };
-
   const handleViewAnimal = (animal: any) => {
     setSelectedAnimal(animal);
     setShowDetailModal(true);
