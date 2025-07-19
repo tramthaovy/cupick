@@ -129,6 +129,21 @@ export default function Farm() {
     { value: "chicken", label: "Gà", emoji: "🐓" },
   ];
 
+  // Calculate animal counts by species
+  const getAnimalCountBySpecies = (species: string) => {
+    return animals.filter((animal) => animal.species === species).length;
+  };
+
+  const getTotalAnimals = () => {
+    return animals.length;
+  };
+
+  // Get filtered animals based on selected category
+  const getFilteredAnimals = () => {
+    if (!selectedCategory) return animals;
+    return animals.filter((animal) => animal.species === selectedCategory);
+  };
+
   const handleAddAnimal = () => {
     // In real app, this would call API
     console.log("Adding animal:", newAnimal);
