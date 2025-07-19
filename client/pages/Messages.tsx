@@ -175,9 +175,9 @@ export default function Messages() {
   const [newMessage, setNewMessage] = useState("");
   const [showBlockDialog, setShowBlockDialog] = useState(false);
   const [showEndChatDialog, setShowEndChatDialog] = useState(false);
-  const [activeTab, setActiveTab] = useState<
-    "conversations" | "matches" | "ai"
-  >("conversations");
+  const [activeTab, setActiveTab] = useState<"conversations" | "matches">(
+    "conversations",
+  );
   const [showAIChat, setShowAIChat] = useState(false);
   const [aiMessages, setAiMessages] = useState([
     {
@@ -256,7 +256,7 @@ export default function Messages() {
       // Simulate AI response
       setTimeout(() => {
         const responses = [
-          "Tôi hiểu bạn quan tâm về vấn ��ề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
+          "Tôi hiểu bạn quan tâm về vấn đề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
           "Về giá cả hiện tại, thị trường đang có xu hư���ng tăng nhẹ. Bạn có thể tham khảo...",
           "Để chọn con giống tốt, bạn cần chú ý đến sức khỏe, nguồn gốc và độ tuổi...",
           "Tôi có thể giúp bạn kết nối với những người bán uy tín trong khu vực của bạn.",
