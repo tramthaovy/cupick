@@ -734,22 +734,41 @@ export default function Messages() {
                               <p className="text-sm text-muted-foreground truncate">
                                 {conversation.lastMessage}
                               </p>
-                              <Badge
-                                variant="outline"
-                                className={`text-xs ${getStatusColor(
-                                  conversation.status,
-                                )}`}
-                              >
-                                {getStatusText(conversation.status)}
-                              </Badge>
+                              {!conversation.isAI && (
+                                <Badge
+                                  variant="outline"
+                                  className={`text-xs ${getStatusColor(
+                                    conversation.status,
+                                  )}`}
+                                >
+                                  {getStatusText(conversation.status)}
+                                </Badge>
+                              )}
                             </div>
                             <div className="flex items-center space-x-2 mt-1">
-                              <Badge variant="secondary" className="text-xs">
-                                {conversation.animal}
-                              </Badge>
-                              <Badge variant="outline" className="text-xs">
-                                {conversation.participant.role}
-                              </Badge>
+                              {conversation.isAI ? (
+                                <Badge
+                                  variant="default"
+                                  className="text-xs bg-primary"
+                                >
+                                  <Bot className="h-3 w-3 mr-1" />
+                                  AI Tư vấn
+                                </Badge>
+                              ) : (
+                                <>
+                                  {conversation.animal && (
+                                    <Badge
+                                      variant="secondary"
+                                      className="text-xs"
+                                    >
+                                      {conversation.animal}
+                                    </Badge>
+                                  )}
+                                  <Badge variant="outline" className="text-xs">
+                                    {conversation.participant.role}
+                                  </Badge>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
