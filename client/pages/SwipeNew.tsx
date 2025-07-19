@@ -21,7 +21,20 @@ const animals = [
     location: "Long An",
     image:
       "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&h=800&fit=crop",
-    tags: ["Giống nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
+    tags: ["Gi���ng nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
+    ownerInfo: {
+      name: "Nguyễn Văn A",
+      farmName: "Trại Thành Đạt",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      location: "Long An, Việt Nam",
+      experience: "15 năm kinh nghiệm",
+      speciality: "Bò giống cao cấp",
+      rating: 4.8,
+      totalAnimals: 50,
+      verified: true,
+      bio: "Chuyên cung cấp bò giống chất lượng cao với 15 năm kinh nghiệm trong ngành chăn nuôi.",
+    },
   },
   {
     id: 2,
@@ -36,6 +49,19 @@ const animals = [
     image:
       "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=600&h=800&fit=crop",
     tags: ["Cao sản", "Thương phẩm", "Khỏe mạnh"],
+    ownerInfo: {
+      name: "Trần Thị B",
+      farmName: "Trang trại Hòa Bình",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b734?w=150&h=150&fit=crop&crop=face",
+      location: "Đồng Nai, Việt Nam",
+      experience: "8 năm kinh nghiệm",
+      speciality: "Lợn thương phẩm",
+      rating: 4.6,
+      totalAnimals: 120,
+      verified: true,
+      bio: "Trang trại chuyên nuôi lợn thương phẩm quy mô lớn với công nghệ hiện đại.",
+    },
   },
   {
     id: 3,
@@ -50,6 +76,19 @@ const animals = [
     image:
       "https://images.unsplash.com/photo-1573160103600-1eba0c5c8763?w=600&h=800&fit=crop",
     tags: ["Nái giống", "Sinh sản cao", "Thuần chủng"],
+    ownerInfo: {
+      name: "Lê Minh C",
+      farmName: "Trại chăn nuôi Phước An",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      location: "Tiền Giang, Việt Nam",
+      experience: "12 năm kinh nghiệm",
+      speciality: "Lợn nái giống",
+      rating: 4.9,
+      totalAnimals: 80,
+      verified: true,
+      bio: "Chuyên cung cấp lợn nái giống chất lượng cao với tỷ lệ sinh sản vượt trội.",
+    },
   },
 ];
 
