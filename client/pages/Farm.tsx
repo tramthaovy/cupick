@@ -338,7 +338,18 @@ export default function Farm() {
                         onClick={() => setSelectedCategory(species.value)}
                       >
                         <CardContent className="p-6 text-center">
-                          <div className="text-4xl mb-2">{species.emoji}</div>
+                          <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-muted">
+                            <img
+                              src={species.image}
+                              alt={species.label}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = "none";
+                                target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl">${species.icon}</div>`;
+                              }}
+                            />
+                          </div>
                           <div className="text-3xl font-bold text-primary mb-1">
                             {count}
                           </div>
@@ -786,7 +797,7 @@ export default function Farm() {
                 variant="outline"
                 onClick={() => setShowEditDialog(false)}
               >
-                Hủy
+                H��y
               </Button>
               <Button onClick={handleUpdateAnimal}>Cập nhật</Button>
             </DialogFooter>
