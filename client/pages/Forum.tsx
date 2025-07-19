@@ -234,67 +234,71 @@ export default function Forum() {
         </div>
 
         <div className="p-4 space-y-6">
-                              {/* Topics Section */}
+          {/* Topics Section */}
           <div className="space-y-3">
             <h2 className="text-lg font-semibold">Chủ đề nổi bật</h2>
             <div className="overflow-x-auto">
-              <div className="flex space-x-3 pb-2" style={{ minWidth: 'max-content' }}>
-              <Card
-                className={`cursor-pointer transition-all ${
-                  selectedView === "all"
-                    ? "ring-2 ring-primary bg-primary/5"
-                    : "hover:bg-muted/50"
-                }`}
-                onClick={() => setSelectedView("all")}
+              <div
+                className="flex space-x-3 pb-2"
+                style={{ minWidth: "max-content" }}
               >
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold">All</span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold">Tất cả bài viết</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Xem tất cả chủ đề
-                        </p>
-                      </div>
-                    </div>
-                    <Badge variant="secondary">{posts.length}</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {topics.map((topic) => (
                 <Card
-                  key={topic.id}
                   className={`cursor-pointer transition-all ${
-                    selectedView === topic.id.toString()
+                    selectedView === "all"
                       ? "ring-2 ring-primary bg-primary/5"
                       : "hover:bg-muted/50"
                   }`}
-                  onClick={() => setSelectedView(topic.id.toString())}
+                  onClick={() => setSelectedView("all")}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${topic.color}`}
-                        >
-                          <span className="text-lg">{topic.icon}</span>
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold">All</span>
                         </div>
                         <div>
-                          <h3 className="font-semibold">{topic.name}</h3>
+                          <h3 className="font-semibold">Tất cả bài viết</h3>
                           <p className="text-sm text-muted-foreground">
-                            {topic.description}
+                            Xem tất cả chủ đề
                           </p>
                         </div>
                       </div>
-                      <Badge variant="secondary">{topic.postCount}</Badge>
+                      <Badge variant="secondary">{posts.length}</Badge>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+
+                {topics.map((topic) => (
+                  <Card
+                    key={topic.id}
+                    className={`cursor-pointer transition-all ${
+                      selectedView === topic.id.toString()
+                        ? "ring-2 ring-primary bg-primary/5"
+                        : "hover:bg-muted/50"
+                    }`}
+                    onClick={() => setSelectedView(topic.id.toString())}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${topic.color}`}
+                          >
+                            <span className="text-lg">{topic.icon}</span>
+                          </div>
+                          <div>
+                            <h3 className="font-semibold">{topic.name}</h3>
+                            <p className="text-sm text-muted-foreground">
+                              {topic.description}
+                            </p>
+                          </div>
+                        </div>
+                        <Badge variant="secondary">{topic.postCount}</Badge>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
 
