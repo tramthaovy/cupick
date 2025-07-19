@@ -64,7 +64,7 @@ const topics = [
   {
     id: 3,
     name: "Hỏi đáp",
-    description: "Giải đáp thắc mắc về chăn nuôi",
+    description: "Giải đáp thắc mắc v�� chăn nuôi",
     icon: "❓",
     postCount: 67,
     color: "bg-orange-100 text-orange-700",
@@ -111,7 +111,7 @@ const posts = [
     content:
       "Vừa bán được 5 con lợn Duroc 6 tháng tuổi với giá 7.5 triệu/con. Chia sẻ kinh nghiệm nuôi để bán được giá cao...",
     author: {
-      name: "Trần Thị B",
+      name: "Tr���n Thị B",
       avatar: "B",
     },
     topic: "Giao dịch thành công",
@@ -234,10 +234,11 @@ export default function Forum() {
         </div>
 
         <div className="p-4 space-y-6">
-          {/* Topics Section */}
+                    {/* Topics Section */}
           <div className="space-y-3">
             <h2 className="text-lg font-semibold">Chủ đề nổi bật</h2>
-            <div className="grid grid-cols-1 gap-3">
+            <div className="overflow-x-auto">
+              <div className="flex space-x-3 pb-2" style={{ minWidth: 'max-content' }}>
               <Card
                 className={`cursor-pointer transition-all ${
                   selectedView === "all"
