@@ -33,7 +33,7 @@ const animals = [
       farmName: "Trại Thành Đạt",
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      location: "Long An, Việt Nam",
+      location: "Long An, Vi��t Nam",
       experience: "15 năm kinh nghiệm",
       speciality: "Bò giống cao cấp",
       rating: 4.8,
@@ -360,6 +360,50 @@ export default function SwipeNew() {
                     {currentAnimal.owner}
                   </Badge>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Owner Information Section */}
+        <div className="absolute bottom-24 left-0 right-0 bg-white border-t border-gray-200">
+          <div
+            className="p-4 cursor-pointer hover:bg-gray-50 transition-colors"
+            onClick={() => setShowOwnerProfile(true)}
+          >
+            <div className="flex items-center space-x-3">
+              <Avatar className="w-12 h-12">
+                <AvatarImage
+                  src={currentAnimal.ownerInfo.avatar}
+                  alt={currentAnimal.ownerInfo.name}
+                />
+                <AvatarFallback>
+                  {currentAnimal.ownerInfo.name.charAt(0)}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center space-x-2">
+                  <h3 className="font-semibold text-gray-900 truncate">
+                    {currentAnimal.ownerInfo.name}
+                  </h3>
+                  {currentAnimal.ownerInfo.verified && (
+                    <Shield className="h-4 w-4 text-blue-500" />
+                  )}
+                </div>
+                <p className="text-sm text-gray-500 truncate">
+                  {currentAnimal.ownerInfo.location}
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="flex items-center space-x-1">
+                  <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                  <span className="text-sm font-medium">
+                    {currentAnimal.ownerInfo.rating}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500">
+                  {currentAnimal.ownerInfo.experience}
+                </p>
               </div>
             </div>
           </div>
