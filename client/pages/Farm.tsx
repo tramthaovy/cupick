@@ -99,7 +99,7 @@ const animals = [
       "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop",
     swipes: 18,
     matches: 1,
-    description: "Gà giống to kh��e, khả năng sinh sản cao",
+    description: "Gà giống to khỏe, khả năng sinh sản cao",
     weight: "3.5kg",
     location: "Bình Dương",
   },
@@ -141,21 +141,9 @@ const animals = [
 
 export default function Farm() {
   const navigate = useNavigate();
-  const [showAddDialog, setShowAddDialog] = useState(false);
-  const [showEditDialog, setShowEditDialog] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [newAnimal, setNewAnimal] = useState({
-    name: "",
-    species: "",
-    breed: "",
-    age: "",
-    description: "",
-    health: "",
-    price: "",
-    weight: "",
-  });
 
   // Species options
   const speciesOptions = [
@@ -603,7 +591,7 @@ export default function Farm() {
                 </div>
 
                 <div>
-                  <Label htmlFor="health">Tình trạng sức khỏe</Label>
+                  <Label htmlFor="health">Tình tr��ng sức khỏe</Label>
                   <Select
                     value={newAnimal.health}
                     onValueChange={(value) =>
