@@ -479,14 +479,24 @@ export default function Farm() {
 
                 {getFilteredAnimals().length === 0 && (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                      <div className="text-2xl">
-                        {
-                          speciesOptions.find(
-                            (s) => s.value === selectedCategory,
-                          )?.emoji
-                        }
-                      </div>
+                    <div className="w-16 h-16 bg-muted rounded-full overflow-hidden mx-auto mb-4">
+                      {(() => {
+                        const species = speciesOptions.find(
+                          (s) => s.value === selectedCategory,
+                        );
+                        return (
+                          <img
+                            src={species?.image}
+                            alt={species?.label}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = "none";
+                              target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl">${species?.icon}</div>`;
+                            }}
+                          />
+                        );
+                      })()}
                     </div>
                     <h3 className="text-lg font-semibold mb-2">
                       Chưa có{" "}
