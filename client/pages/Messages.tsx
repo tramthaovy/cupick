@@ -256,7 +256,7 @@ export default function Messages() {
       // Simulate AI response
       setTimeout(() => {
         const responses = [
-          "Tôi hiểu bạn quan tâm về vấn đề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
+          "Tôi hiểu bạn quan tâm về vấn ��ề này. Dựa trên kinh nghiệm, tôi khuyên bạn nên...",
           "Về giá cả hiện tại, thị trường đang có xu hư���ng tăng nhẹ. Bạn có thể tham khảo...",
           "Để chọn con giống tốt, bạn cần chú ý đến sức khỏe, nguồn gốc và độ tuổi...",
           "Tôi có thể giúp bạn kết nối với những người bán uy tín trong khu vực của bạn.",
@@ -655,15 +655,6 @@ export default function Messages() {
             >
               <Heart className="h-3 w-3 mr-1" />
               Đã Match
-            </Button>
-            <Button
-              variant={activeTab === "ai" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setActiveTab("ai")}
-              className="flex-1 h-8"
-            >
-              <Bot className="h-3 w-3 mr-1" />
-              AI Assistant
             </Button>
           </div>
         </div>
