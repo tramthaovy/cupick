@@ -237,41 +237,41 @@ export default function Farm() {
           </p>
         </div>
 
-        <div className="p-4 space-y-6">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 gap-3">
-            <Card>
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-primary">
-                  {farmStats.totalAnimals}
-                </div>
-                <div className="text-sm text-muted-foreground">Con giống</div>
+                <div className="p-4 space-y-6 pb-20">
+          {!selectedCategory ? (
+            <>
+                        {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-3">
+                <Card>
+                  <CardContent className="p-4 text-center">
+                    <div className="text-2xl font-bold text-primary">
+                      {getTotalAnimals()}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Tổng con vật</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-accent">
-                  {farmStats.totalSwipes}
-                </div>
-                <div className="text-sm text-muted-foreground">Lượt quẹt</div>
+                                    <div className="text-2xl font-bold text-blue-600">
+                      {farmStats.totalSwipes}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Lượt xem</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-pink-500">
-                  {farmStats.totalMatches}
-                </div>
-                <div className="text-sm text-muted-foreground">Kết nối</div>
+                                    <div className="text-2xl font-bold text-green-600">
+                      {farmStats.totalMatches}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Match</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-blue-500">
-                  {farmStats.newMessages}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Tin nhắn mới
-                </div>
+                                    <div className="text-2xl font-bold text-orange-600">
+                      {farmStats.newMessages}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Tin nhắn mới</div>
               </CardContent>
             </Card>
           </div>
