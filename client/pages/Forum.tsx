@@ -234,7 +234,7 @@ export default function Forum() {
         </div>
 
         <div className="p-4 space-y-6">
-                    {/* Topics Section */}
+                              {/* Topics Section */}
           <div className="space-y-3">
             <h2 className="text-lg font-semibold">Chủ đề nổi bật</h2>
             <div className="overflow-x-auto">
