@@ -567,10 +567,10 @@ export default function Forum() {
         {/* Floating Action Button */}
         <Button
           onClick={() => setShowCreatePost(true)}
-          className="fixed bottom-24 right-4 w-14 h-14 rounded-full shadow-lg z-50"
-          size="lg"
+          className="fixed bottom-24 right-4 shadow-lg z-50 h-12 px-4 rounded-full"
         >
-          <Plus className="h-6 w-6" />
+          <Plus className="h-5 w-5 mr-2" />
+          Tạo bài viết
         </Button>
       </div>
     </MobileLayout>
