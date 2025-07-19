@@ -56,7 +56,7 @@ const topics = [
   {
     id: 2,
     name: "Giao dịch thành công",
-    description: "Chia sẻ những giao dịch thành công",
+    description: "Chia s�� những giao dịch thành công",
     icon: "🤝",
     postCount: 23,
     color: "bg-green-100 text-green-700",
@@ -72,7 +72,7 @@ const topics = [
   {
     id: 4,
     name: "Thị trường",
-    description: "Thông tin giá cả và thị trư��ng",
+    description: "Thông tin giá cả và thị trường",
     icon: "📈",
     postCount: 34,
     color: "bg-purple-100 text-purple-700",
@@ -272,29 +272,31 @@ export default function Forum() {
                 {topics.map((topic) => (
                   <Card
                     key={topic.id}
-                    className={`cursor-pointer transition-all ${
+                    className={`cursor-pointer transition-all flex-shrink-0 w-48 ${
                       selectedView === topic.id.toString()
                         ? "ring-2 ring-primary bg-primary/5"
                         : "hover:bg-muted/50"
                     }`}
                     onClick={() => setSelectedView(topic.id.toString())}
                   >
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div
-                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${topic.color}`}
-                          >
-                            <span className="text-lg">{topic.icon}</span>
-                          </div>
-                          <div>
-                            <h3 className="font-semibold">{topic.name}</h3>
-                            <p className="text-sm text-muted-foreground">
-                              {topic.description}
-                            </p>
-                          </div>
+                    <CardContent className="p-3">
+                      <div className="text-center space-y-2">
+                        <div
+                          className={`w-12 h-12 rounded-lg flex items-center justify-center mx-auto ${topic.color}`}
+                        >
+                          <span className="text-xl">{topic.icon}</span>
                         </div>
-                        <Badge variant="secondary">{topic.postCount}</Badge>
+                        <div>
+                          <h3 className="font-semibold text-sm">
+                            {topic.name}
+                          </h3>
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-1">
+                            {topic.description}
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            {topic.postCount}
+                          </Badge>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
