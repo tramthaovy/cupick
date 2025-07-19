@@ -469,8 +469,7 @@ export default function Farm() {
           Thêm con vật
         </Button>
 
-        {/* Add Animal Dialog */}
-        <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
+                {/* View Animal Detail Modal - keeping only this one */}
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle>Thêm con giống mới</DialogTitle>
