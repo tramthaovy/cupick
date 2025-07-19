@@ -1,33 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Plus,
   Edit,
@@ -35,8 +16,6 @@ import {
   Eye,
   Heart,
   MessageCircle,
-  BarChart3,
-  Camera,
   Bell,
   ArrowLeft,
 } from "lucide-react";
@@ -99,7 +78,7 @@ const animals = [
       "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop",
     swipes: 18,
     matches: 1,
-    description: "Gà giống to khỏe, khả năng sinh sản cao",
+    description: "Gà gi���ng to khỏe, khả năng sinh sản cao",
     weight: "3.5kg",
     location: "Bình Dương",
   },
@@ -473,297 +452,6 @@ export default function Farm() {
         <Dialog open={showDetailModal} onOpenChange={setShowDetailModal}>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>Thêm con giống mới</DialogTitle>
-              <DialogDescription>
-                Nhập thông tin chi tiết về con giống
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="flex flex-col items-center space-y-2">
-                <div className="w-20 h-20 bg-muted rounded-xl flex items-center justify-center">
-                  <Camera className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <Button variant="outline" size="sm">
-                  Thêm ảnh
-                </Button>
-              </div>
-
-              <div className="space-y-3">
-                <div>
-                  <Label htmlFor="name">Tên con giống</Label>
-                  <Input
-                    id="name"
-                    placeholder="VD: Bò Wagyu A5"
-                    value={newAnimal.name}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, name: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="species">Loài</Label>
-                  <Select
-                    value={newAnimal.species}
-                    onValueChange={(value) =>
-                      setNewAnimal({ ...newAnimal, species: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Chọn loài" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {speciesOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.emoji} {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="breed">Giống</Label>
-                  <Input
-                    id="breed"
-                    placeholder="VD: Wagyu, Duroc, Brahma"
-                    value={newAnimal.breed}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, breed: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <Label htmlFor="age">Tuổi</Label>
-                    <Input
-                      id="age"
-                      placeholder="VD: 2 tuổi"
-                      value={newAnimal.age}
-                      onChange={(e) =>
-                        setNewAnimal({ ...newAnimal, age: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="weight">Cân nặng</Label>
-                    <Input
-                      id="weight"
-                      placeholder="VD: 450kg"
-                      value={newAnimal.weight}
-                      onChange={(e) =>
-                        setNewAnimal({ ...newAnimal, weight: e.target.value })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="health">Tình trạng sức khỏe</Label>
-                  <Select
-                    value={newAnimal.health}
-                    onValueChange={(value) =>
-                      setNewAnimal({ ...newAnimal, health: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Chọn tình trạng" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Rất tốt">Rất tốt</SelectItem>
-                      <SelectItem value="Tốt">Tốt</SelectItem>
-                      <SelectItem value="Trung bình">Trung bình</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="price">Giá bán</Label>
-                  <Input
-                    id="price"
-                    placeholder="VD: 45.000.000 VND"
-                    value={newAnimal.price}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, price: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="description">Mô tả</Label>
-                  <Textarea
-                    id="description"
-                    placeholder="Mô tả chi tiết về con giống..."
-                    rows={3}
-                    value={newAnimal.description}
-                    onChange={(e) =>
-                      setNewAnimal({
-                        ...newAnimal,
-                        description: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button variant="outline" onClick={() => setShowAddDialog(false)}>
-                Hủy
-              </Button>
-              <Button onClick={handleAddAnimal}>Thêm con giống</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-
-        {/* Edit Animal Dialog */}
-        <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
-          <DialogContent className="sm:max-w-md">
-            <DialogHeader>
-              <DialogTitle>Chỉnh sửa thông tin</DialogTitle>
-              <DialogDescription>
-                Cập nhật thông tin con giống
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="flex flex-col items-center space-y-2">
-                <div className="w-20 h-20 bg-muted rounded-xl flex items-center justify-center">
-                  <Camera className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <Button variant="outline" size="sm">
-                  Thay đổi ảnh
-                </Button>
-              </div>
-
-              <div className="space-y-3">
-                <div>
-                  <Label htmlFor="edit-name">Tên con giống</Label>
-                  <Input
-                    id="edit-name"
-                    value={newAnimal.name}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, name: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="edit-species">Loài</Label>
-                  <Select
-                    value={newAnimal.species}
-                    onValueChange={(value) =>
-                      setNewAnimal({ ...newAnimal, species: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {speciesOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.emoji} {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="edit-breed">Giống</Label>
-                  <Input
-                    id="edit-breed"
-                    value={newAnimal.breed}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, breed: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <Label htmlFor="edit-age">Tuổi</Label>
-                    <Input
-                      id="edit-age"
-                      value={newAnimal.age}
-                      onChange={(e) =>
-                        setNewAnimal({ ...newAnimal, age: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="edit-weight">Cân nặng</Label>
-                    <Input
-                      id="edit-weight"
-                      value={newAnimal.weight}
-                      onChange={(e) =>
-                        setNewAnimal({ ...newAnimal, weight: e.target.value })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="edit-health">Tình trạng sức khỏe</Label>
-                  <Select
-                    value={newAnimal.health}
-                    onValueChange={(value) =>
-                      setNewAnimal({ ...newAnimal, health: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Rất tốt">Rất tốt</SelectItem>
-                      <SelectItem value="Tốt">Tốt</SelectItem>
-                      <SelectItem value="Trung bình">Trung bình</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="edit-price">Giá bán</Label>
-                  <Input
-                    id="edit-price"
-                    value={newAnimal.price}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, price: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="edit-description">Mô tả</Label>
-                  <Textarea
-                    id="edit-description"
-                    rows={3}
-                    value={newAnimal.description}
-                    onChange={(e) =>
-                      setNewAnimal({
-                        ...newAnimal,
-                        description: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button
-                variant="outline"
-                onClick={() => setShowEditDialog(false)}
-              >
-                H��y
-              </Button>
-              <Button onClick={handleUpdateAnimal}>Cập nhật</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-
-        {/* Animal Detail Modal */}
-        <Dialog open={showDetailModal} onOpenChange={setShowDetailModal}>
-          <DialogContent className="sm:max-w-md">
-            <DialogHeader>
               <DialogTitle>Chi tiết con giống</DialogTitle>
             </DialogHeader>
             {selectedAnimal && (
@@ -819,7 +507,7 @@ export default function Farm() {
 
                   <div>
                     <span className="text-muted-foreground text-sm">
-                      Mô t��:
+                      Mô tả:
                     </span>
                     <p className="text-sm mt-1">{selectedAnimal.description}</p>
                   </div>
