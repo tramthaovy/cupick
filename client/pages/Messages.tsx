@@ -71,6 +71,21 @@ const matchedUsers = [
 // Sample chat data
 const conversations = [
   {
+    id: "ai-assistant",
+    participant: {
+      name: "AI Assistant",
+      avatar: "AI",
+      role: "Tư vấn viên", // AI assistant
+    },
+    animal: "",
+    lastMessage: "Tôi có thể giúp bạn tư vấn về chăn nuôi",
+    timestamp: "Luôn sẵn sàng",
+    unreadCount: 0,
+    status: "ai-assistant",
+    isOnline: true,
+    isAI: true,
+  },
+  {
     id: 1,
     participant: {
       name: "Trần Văn A",
@@ -168,7 +183,7 @@ export default function Messages() {
     {
       id: 1,
       content:
-        "Xin chào! Tôi là AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
+        "Xin chào! Tôi l�� AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
       isBot: true,
       timestamp: "Bây giờ",
     },
@@ -210,7 +225,7 @@ export default function Messages() {
           id: chatMessages.length + 1,
           senderId: 1,
           senderName: "Tôi",
-          content: `[Hình ảnh: ${file.name}]`,
+          content: `[H��nh ảnh: ${file.name}]`,
           timestamp: "Bây giờ",
           type: "image",
           status: "delivered",
@@ -819,7 +834,7 @@ export default function Messages() {
               </Card>
 
               <div className="space-y-2">
-                <h4 className="font-semibold text-sm">Gợi ý câu hỏi:</h4>
+                <h4 className="font-semibold text-sm">G��i ý câu hỏi:</h4>
                 <div className="space-y-2">
                   {[
                     "Giá lợn giống hiện tại như thế nào?",
