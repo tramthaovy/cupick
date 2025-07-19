@@ -21,7 +21,7 @@ const animals = [
     location: "Long An",
     image:
       "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&h=800&fit=crop",
-    tags: ["Gi���ng nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
+    tags: ["Giống nhập khẩu", "Chất lượng cao", "Có giấy tờ"],
     ownerInfo: {
       name: "Nguyễn Văn A",
       farmName: "Trại Thành Đạt",
@@ -97,6 +97,7 @@ export default function SwipeNew() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showMatch, setShowMatch] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showOwnerProfile, setShowOwnerProfile] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
 
   // Drag/swipe state
