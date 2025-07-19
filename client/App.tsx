@@ -42,6 +42,8 @@ const App = () => (
           {/* Main App Routes */}
           <Route path="/swipe" element={<Swipe />} />
           <Route path="/farm" element={<Farm />} />
+          <Route path="/farm/add" element={<AddAnimal />} />
+          <Route path="/farm/edit/:id" element={<EditAnimal />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile />} />
