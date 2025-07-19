@@ -516,7 +516,7 @@ export default function Farm() {
 
         {/* Fixed Add Animal Button */}
         <Button
-          onClick={() => setShowAddDialog(true)}
+          onClick={() => navigate("/farm/add")}
           className="fixed bottom-24 right-4 shadow-lg z-10 h-12 px-4 rounded-full"
         >
           <Plus className="h-5 w-5 mr-2" />
@@ -776,7 +776,7 @@ export default function Farm() {
                 </div>
 
                 <div>
-                  <Label htmlFor="edit-price">Giá bán</Label>
+                  <Label htmlFor="edit-price">Gi�� bán</Label>
                   <Input
                     id="edit-price"
                     value={newAnimal.price}
