@@ -696,11 +696,17 @@ export default function Messages() {
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-3">
                           <div className="relative">
-                            <Avatar className="w-12 h-12">
-                              <AvatarFallback>
-                                {conversation.participant.avatar}
-                              </AvatarFallback>
-                            </Avatar>
+                            {conversation.isAI ? (
+                              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                <Bot className="h-6 w-6 text-white" />
+                              </div>
+                            ) : (
+                              <Avatar className="w-12 h-12">
+                                <AvatarFallback>
+                                  {conversation.participant.avatar}
+                                </AvatarFallback>
+                              </Avatar>
+                            )}
                             {conversation.isOnline && (
                               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white" />
                             )}
