@@ -103,6 +103,40 @@ const animals = [
     weight: "3.5kg",
     location: "Bình Dương",
   },
+  {
+    id: 4,
+    name: "Bò Holstein",
+    species: "cow",
+    breed: "Holstein",
+    age: "3 tuổi",
+    health: "Tốt",
+    price: "35.000.000 VND",
+    status: "Đang hiển thị",
+    image:
+      "https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?w=400&h=300&fit=crop",
+    swipes: 28,
+    matches: 1,
+    description: "Bò sữa năng suất cao",
+    weight: "520kg",
+    location: "Lâm Đồng",
+  },
+  {
+    id: 5,
+    name: "Lợn Yorkshire",
+    species: "pig",
+    breed: "Yorkshire",
+    age: "10 tháng",
+    health: "Tốt",
+    price: "12.000.000 VND",
+    status: "Đang hiển thị",
+    image:
+      "https://images.unsplash.com/photo-1573160103600-1eba0c5c8763?w=400&h=300&fit=crop",
+    swipes: 41,
+    matches: 4,
+    description: "Lợn nái giống sinh sản tốt, có khả năng cho nhiều con",
+    weight: "95kg",
+    location: "Tiền Giang",
+  },
 ];
 
 export default function Farm() {
@@ -146,16 +180,17 @@ export default function Farm() {
   };
 
   const handleAddAnimal = () => {
-    // In real app, this would call API
     console.log("Adding animal:", newAnimal);
     setShowAddDialog(false);
     setNewAnimal({
       name: "",
+      species: "",
       breed: "",
       age: "",
       description: "",
       health: "",
       price: "",
+      weight: "",
     });
   };
 
@@ -174,15 +209,8 @@ export default function Farm() {
     setShowEditDialog(true);
   };
 
-  const handleSaveEdit = () => {
-    if (selectedAnimal) {
-      const animalIndex = animals.findIndex((a) => a.id === selectedAnimal.id);
-      if (animalIndex !== -1) {
-        Object.assign(animals[animalIndex], newAnimal);
-        console.log("Animal updated:", animals[animalIndex]);
-        alert("Thông tin con giống đã được cập nhật!");
-      }
-    }
+  const handleUpdateAnimal = () => {
+    console.log("Updating animal:", selectedAnimal.id, newAnimal);
     setShowEditDialog(false);
     setSelectedAnimal(null);
     setNewAnimal({
@@ -197,20 +225,15 @@ export default function Farm() {
     });
   };
 
-  const handleDeleteAnimal = (animalId: number) => {
-    if (confirm("Bạn có chắc muốn xóa con giống này?")) {
-      const animalIndex = animals.findIndex((a) => a.id === animalId);
-      if (animalIndex !== -1) {
-        animals.splice(animalIndex, 1);
-        console.log("Animal deleted:", animalId);
-        alert("Con giống đã được xóa!");
-      }
-    }
-  };
-
-  const handleViewDetails = (animal: any) => {
+  const handleViewAnimal = (animal: any) => {
     setSelectedAnimal(animal);
     setShowDetailModal(true);
+  };
+
+  const handleDeleteAnimal = (animalId: number) => {
+    if (confirm("Bạn có chắc muốn xóa con giống này?")) {
+      console.log("Deleting animal:", animalId);
+    }
   };
 
   return (
@@ -233,149 +256,233 @@ export default function Farm() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Theo d��i và quản lý con giống của bạn
+            Theo dõi và quản lý con giống của bạn
           </p>
         </div>
 
-                <div className="p-4 space-y-6 pb-20">
+        <div className="p-4 space-y-6 pb-20">
           {!selectedCategory ? (
             <>
-                        {/* Stats Cards */}
+              {/* Stats Cards */}
               <div className="grid grid-cols-2 gap-3">
                 <Card>
                   <CardContent className="p-4 text-center">
                     <div className="text-2xl font-bold text-primary">
                       {getTotalAnimals()}
                     </div>
-                    <div className="text-sm text-muted-foreground">Tổng con vật</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4 text-center">
-                                    <div className="text-2xl font-bold text-blue-600">
+                    <div className="text-sm text-muted-foreground">
+                      Tổng con vật
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-4 text-center">
+                    <div className="text-2xl font-bold text-blue-600">
                       {farmStats.totalSwipes}
                     </div>
-                    <div className="text-sm text-muted-foreground">Lượt xem</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4 text-center">
-                                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-sm text-muted-foreground">
+                      Lượt xem
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-4 text-center">
+                    <div className="text-2xl font-bold text-green-600">
                       {farmStats.totalMatches}
                     </div>
                     <div className="text-sm text-muted-foreground">Match</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4 text-center">
-                                    <div className="text-2xl font-bold text-orange-600">
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-4 text-center">
+                    <div className="text-2xl font-bold text-orange-600">
                       {farmStats.newMessages}
                     </div>
-                    <div className="text-sm text-muted-foreground">Tin nhắn mới</div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Add New Animal Button */}
-          <Button
-            onClick={() => setShowAddDialog(true)}
-            className="w-full h-12 text-base font-semibold"
-          >
-            <Plus className="h-5 w-5 mr-2" />
-            Thêm con giống mới
-          </Button>
-
-          {/* Animals List */}
-          <div className="space-y-4">
-            <h2 className="text-lg font-semibold">Danh sách con giống</h2>
-            {animals.map((animal) => (
-              <Card key={animal.id}>
-                <CardContent className="p-4">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden">
-                      <img
-                        src={animal.image}
-                        alt={animal.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src =
-                            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNCAzMkgxNlYyNEg0OFY0MEg0MFYzMkgzMlYyNEgyNFYzMloiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
-                        }}
-                      />
+                    <div className="text-sm text-muted-foreground">
+                      Tin nhắn mới
                     </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-semibold">{animal.name}</h3>
-                          <div className="flex items-center space-x-2 mt-1">
-                            <Badge variant="secondary" className="text-xs">
-                              {animal.breed}
-                            </Badge>
-                            <Badge variant="outline" className="text-xs">
-                              {animal.age}
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Herd Breakdown */}
+              <div>
+                <h2 className="text-lg font-semibold mb-4">
+                  Phân loại đàn vật
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {speciesOptions.map((species) => {
+                    const count = getAnimalCountBySpecies(species.value);
+                    return (
+                      <Card
+                        key={species.value}
+                        className="cursor-pointer hover:bg-muted/50 transition-colors"
+                        onClick={() => setSelectedCategory(species.value)}
+                      >
+                        <CardContent className="p-6 text-center">
+                          <div className="text-4xl mb-2">{species.emoji}</div>
+                          <div className="text-3xl font-bold text-primary mb-1">
+                            {count}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {species.label}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Back button and category title */}
+              <div className="flex items-center space-x-3">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSelectedCategory(null)}
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <h2 className="text-lg font-semibold">
+                  {
+                    speciesOptions.find((s) => s.value === selectedCategory)
+                      ?.label
+                  }
+                  ({getAnimalCountBySpecies(selectedCategory)} con)
+                </h2>
+              </div>
+
+              {/* Filtered Animals List */}
+              <div className="space-y-4">
+                {getFilteredAnimals().map((animal) => (
+                  <Card key={animal.id}>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-16 h-16 rounded-xl overflow-hidden">
+                          <img
+                            src={animal.image}
+                            alt={animal.name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src =
+                                "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNCAzMkgxNlYyNEg0OFY0MEg0MFYzMkgzMlYyNEgyNFYzMloiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
+                            }}
+                          />
+                        </div>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <h3 className="font-semibold">{animal.name}</h3>
+                              <div className="flex items-center space-x-2 mt-1">
+                                <Badge variant="secondary" className="text-xs">
+                                  {animal.breed}
+                                </Badge>
+                                <Badge variant="outline" className="text-xs">
+                                  {animal.age}
+                                </Badge>
+                              </div>
+                            </div>
+                            <Badge
+                              variant={
+                                animal.status === "Đang hiển thị"
+                                  ? "default"
+                                  : "secondary"
+                              }
+                              className="text-xs"
+                            >
+                              {animal.status}
                             </Badge>
                           </div>
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {animal.description}
+                          </p>
+                          <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                            <div className="flex items-center space-x-1">
+                              <Eye className="h-3 w-3" />
+                              <span>{animal.swipes}</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <Heart className="h-3 w-3" />
+                              <span>{animal.matches}</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <MessageCircle className="h-3 w-3" />
+                              <span>0</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleViewAnimal(animal)}
+                              className="h-8 text-xs"
+                            >
+                              <Eye className="h-3 w-3 mr-1" />
+                              Xem
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleEditAnimal(animal)}
+                              className="h-8 text-xs"
+                            >
+                              <Edit className="h-3 w-3 mr-1" />
+                              Sửa
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleDeleteAnimal(animal.id)}
+                              className="h-8 text-xs text-destructive hover:text-destructive"
+                            >
+                              <Trash2 className="h-3 w-3 mr-1" />
+                              Xóa
+                            </Button>
+                          </div>
                         </div>
-                        <Badge
-                          variant={
-                            animal.status === "Đang hiển thị"
-                              ? "default"
-                              : "secondary"
-                          }
-                          className="text-xs"
-                        >
-                          {animal.status}
-                        </Badge>
                       </div>
+                    </CardContent>
+                  </Card>
+                ))}
 
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                        <div className="flex items-center space-x-1">
-                          <Heart className="h-3 w-3" />
-                          <span>{animal.swipes}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MessageCircle className="h-3 w-3" />
-                          <span>{animal.matches}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex space-x-2 pt-2">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleViewDetails(animal)}
-                          className="h-8 text-xs"
-                        >
-                          <Eye className="h-3 w-3 mr-1" />
-                          Chi tiết
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleEditAnimal(animal)}
-                          className="h-8 text-xs"
-                        >
-                          <Edit className="h-3 w-3 mr-1" />
-                          Sửa
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleDeleteAnimal(animal.id)}
-                          className="h-8 text-xs text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-3 w-3 mr-1" />
-                          Xóa
-                        </Button>
+                {getFilteredAnimals().length === 0 && (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="text-2xl">
+                        {
+                          speciesOptions.find(
+                            (s) => s.value === selectedCategory,
+                          )?.emoji
+                        }
                       </div>
                     </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Chưa có{" "}
+                      {speciesOptions
+                        .find((s) => s.value === selectedCategory)
+                        ?.label.toLowerCase()}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Nhấn nút "+" để thêm con vật đầu tiên
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                )}
+              </div>
+            </>
+          )}
         </div>
+
+        {/* Fixed Add Animal Button */}
+        <Button
+          onClick={() => setShowAddDialog(true)}
+          size="lg"
+          className="fixed bottom-24 left-4 w-14 h-14 rounded-full shadow-lg z-10"
+        >
+          <Plus className="h-6 w-6" />
+        </Button>
 
         {/* Add Animal Dialog */}
         <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
@@ -401,15 +508,16 @@ export default function Farm() {
                   <Label htmlFor="name">Tên con giống</Label>
                   <Input
                     id="name"
+                    placeholder="VD: Bò Wagyu A5"
                     value={newAnimal.name}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, name: e.target.value })
                     }
-                    placeholder="Nhập tên"
                   />
                 </div>
+
                 <div>
-                  <Label htmlFor="species">Loài vật</Label>
+                  <Label htmlFor="species">Loài</Label>
                   <Select
                     value={newAnimal.species}
                     onValueChange={(value) =>
@@ -417,39 +525,55 @@ export default function Farm() {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Chọn loài vật" />
+                      <SelectValue placeholder="Chọn loài" />
                     </SelectTrigger>
                     <SelectContent>
-                      {speciesOptions.map((species) => (
-                        <SelectItem key={species.value} value={species.value}>
-                          {species.emoji} {species.label}
+                      {speciesOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.emoji} {option.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div>
                   <Label htmlFor="breed">Giống</Label>
                   <Input
                     id="breed"
+                    placeholder="VD: Wagyu, Duroc, Brahma"
                     value={newAnimal.breed}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, breed: e.target.value })
                     }
-                    placeholder="Nhập giống"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="age">Tuổi</Label>
-                  <Input
-                    id="age"
-                    value={newAnimal.age}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, age: e.target.value })
-                    }
-                    placeholder="Nhập tuổi"
-                  />
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="age">Tuổi</Label>
+                    <Input
+                      id="age"
+                      placeholder="VD: 2 tuổi"
+                      value={newAnimal.age}
+                      onChange={(e) =>
+                        setNewAnimal({ ...newAnimal, age: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="weight">Cân nặng</Label>
+                    <Input
+                      id="weight"
+                      placeholder="VD: 450kg"
+                      value={newAnimal.weight}
+                      onChange={(e) =>
+                        setNewAnimal({ ...newAnimal, weight: e.target.value })
+                      }
+                    />
+                  </div>
                 </div>
+
                 <div>
                   <Label htmlFor="health">Tình trạng sức khỏe</Label>
                   <Select
@@ -464,36 +588,29 @@ export default function Farm() {
                     <SelectContent>
                       <SelectItem value="Rất tốt">Rất tốt</SelectItem>
                       <SelectItem value="Tốt">Tốt</SelectItem>
-                      <SelectItem value="Bình thường">Bình thường</SelectItem>
+                      <SelectItem value="Trung bình">Trung bình</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div>
-                  <Label htmlFor="weight">Cân nặng</Label>
-                  <Input
-                    id="weight"
-                    value={newAnimal.weight}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, weight: e.target.value })
-                    }
-                    placeholder="Nhập cân nặng (kg)"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="price">Giá (VND)</Label>
+                  <Label htmlFor="price">Giá bán</Label>
                   <Input
                     id="price"
+                    placeholder="VD: 45.000.000 VND"
                     value={newAnimal.price}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, price: e.target.value })
                     }
-                    placeholder="Nhập giá"
                   />
                 </div>
+
                 <div>
                   <Label htmlFor="description">Mô tả</Label>
                   <Textarea
                     id="description"
+                    placeholder="Mô tả chi tiết về con giống..."
+                    rows={3}
                     value={newAnimal.description}
                     onChange={(e) =>
                       setNewAnimal({
@@ -501,34 +618,26 @@ export default function Farm() {
                         description: e.target.value,
                       })
                     }
-                    placeholder="Mô tả chi tiết về con giống"
-                    rows={3}
                   />
                 </div>
               </div>
             </div>
-            <DialogFooter className="flex space-x-2">
-              <Button
-                variant="outline"
-                onClick={() => setShowAddDialog(false)}
-                className="flex-1"
-              >
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setShowAddDialog(false)}>
                 Hủy
               </Button>
-              <Button onClick={handleAddAnimal} className="flex-1">
-                Lưu
-              </Button>
+              <Button onClick={handleAddAnimal}>Thêm con giống</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
 
         {/* Edit Animal Dialog */}
         <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
-          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
+          <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>Chỉnh sửa con giống</DialogTitle>
+              <DialogTitle>Chỉnh sửa thông tin</DialogTitle>
               <DialogDescription>
-                Cập nhật thông tin chi tiết về con giống
+                Cập nhật thông tin con giống
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
@@ -543,18 +652,18 @@ export default function Farm() {
 
               <div className="space-y-3">
                 <div>
-                  <Label htmlFor="editName">Tên con giống</Label>
+                  <Label htmlFor="edit-name">Tên con giống</Label>
                   <Input
-                    id="editName"
+                    id="edit-name"
                     value={newAnimal.name}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, name: e.target.value })
                     }
-                    placeholder="Nhập tên"
                   />
                 </div>
+
                 <div>
-                  <Label htmlFor="editSpecies">Loài vật</Label>
+                  <Label htmlFor="edit-species">Loài</Label>
                   <Select
                     value={newAnimal.species}
                     onValueChange={(value) =>
@@ -562,52 +671,54 @@ export default function Farm() {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Chọn loài vật" />
+                      <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {speciesOptions.map((species) => (
-                        <SelectItem key={species.value} value={species.value}>
-                          {species.emoji} {species.label}
+                      {speciesOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.emoji} {option.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div>
-                  <Label htmlFor="editBreed">Giống</Label>
+                  <Label htmlFor="edit-breed">Giống</Label>
                   <Input
-                    id="editBreed"
+                    id="edit-breed"
                     value={newAnimal.breed}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, breed: e.target.value })
                     }
-                    placeholder="Nh���p giống"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="editAge">Tuổi</Label>
-                  <Input
-                    id="editAge"
-                    value={newAnimal.age}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, age: e.target.value })
-                    }
-                    placeholder="Nhập tuổi"
-                  />
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="edit-age">Tuổi</Label>
+                    <Input
+                      id="edit-age"
+                      value={newAnimal.age}
+                      onChange={(e) =>
+                        setNewAnimal({ ...newAnimal, age: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="edit-weight">Cân nặng</Label>
+                    <Input
+                      id="edit-weight"
+                      value={newAnimal.weight}
+                      onChange={(e) =>
+                        setNewAnimal({ ...newAnimal, weight: e.target.value })
+                      }
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <Label htmlFor="editWeight">Cân nặng</Label>
-                  <Input
-                    id="editWeight"
-                    value={newAnimal.weight}
-                    onChange={(e) =>
-                      setNewAnimal({ ...newAnimal, weight: e.target.value })
-                    }
-                    placeholder="Nhập cân nặng (kg)"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="editHealth">Tình trạng sức khỏe</Label>
+                  <Label htmlFor="edit-health">Tình trạng sức khỏe</Label>
                   <Select
                     value={newAnimal.health}
                     onValueChange={(value) =>
@@ -615,30 +726,32 @@ export default function Farm() {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Chọn tình trạng" />
+                      <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Rất tốt">Rất tốt</SelectItem>
                       <SelectItem value="Tốt">Tốt</SelectItem>
-                      <SelectItem value="Bình thường">Bình thường</SelectItem>
+                      <SelectItem value="Trung bình">Trung bình</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div>
-                  <Label htmlFor="editPrice">Giá (VND)</Label>
+                  <Label htmlFor="edit-price">Giá bán</Label>
                   <Input
-                    id="editPrice"
+                    id="edit-price"
                     value={newAnimal.price}
                     onChange={(e) =>
                       setNewAnimal({ ...newAnimal, price: e.target.value })
                     }
-                    placeholder="Nhập giá"
                   />
                 </div>
+
                 <div>
-                  <Label htmlFor="editDescription">Mô tả</Label>
+                  <Label htmlFor="edit-description">Mô tả</Label>
                   <Textarea
-                    id="editDescription"
+                    id="edit-description"
+                    rows={3}
                     value={newAnimal.description}
                     onChange={(e) =>
                       setNewAnimal({
@@ -646,164 +759,121 @@ export default function Farm() {
                         description: e.target.value,
                       })
                     }
-                    placeholder="Mô tả chi tiết về con giống"
-                    rows={3}
                   />
                 </div>
               </div>
             </div>
-            <DialogFooter className="flex space-x-2">
+            <DialogFooter>
               <Button
                 variant="outline"
                 onClick={() => setShowEditDialog(false)}
-                className="flex-1"
               >
                 Hủy
               </Button>
-              <Button onClick={handleSaveEdit} className="flex-1">
-                Lưu thay đổi
-              </Button>
+              <Button onClick={handleUpdateAnimal}>Cập nhật</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
 
         {/* Animal Detail Modal */}
         <Dialog open={showDetailModal} onOpenChange={setShowDetailModal}>
-          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
+          <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle>Chi tiết con giống</DialogTitle>
             </DialogHeader>
             {selectedAnimal && (
               <div className="space-y-4">
-                <div className="text-center">
-                  <div className="w-32 h-32 rounded-xl overflow-hidden mx-auto mb-4">
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="w-32 h-32 rounded-xl overflow-hidden">
                     <img
                       src={selectedAnimal.image}
                       alt={selectedAnimal.name}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src =
-                          "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00OCA2NEgzMlY0OEg5NlY4MEg4MFY2NEg2NFY0OEg0OFY2NFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+";
-                      }}
                     />
                   </div>
-                  <h3 className="text-xl font-bold">{selectedAnimal.name}</h3>
-                  <div className="flex items-center justify-center space-x-2 mt-2">
-                    <Badge variant="secondary">{selectedAnimal.breed}</Badge>
-                    <Badge variant="outline">{selectedAnimal.age}</Badge>
-                  </div>
+                  <h3 className="text-lg font-semibold">
+                    {selectedAnimal.name}
+                  </h3>
+                  <Badge
+                    variant={
+                      selectedAnimal.status === "Đang hiển thị"
+                        ? "default"
+                        : "secondary"
+                    }
+                  >
+                    {selectedAnimal.status}
+                  </Badge>
                 </div>
 
                 <div className="space-y-3">
-                  <div>
-                    <h4 className="font-semibold mb-2">Thông tin cơ bản</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">Loài:</span>
-                        <div className="mt-1 font-medium">
-                          {
-                            speciesOptions.find(
-                              (s) => s.value === selectedAnimal.species,
-                            )?.label
-                          }
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Cân nặng:</span>
-                        <div className="mt-1 font-medium">
-                          {selectedAnimal.weight}
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Sức khỏe:</span>
-                        <div className="mt-1">
-                          <Badge
-                            variant={
-                              selectedAnimal.health === "Rất tốt"
-                                ? "default"
-                                : "secondary"
-                            }
-                          >
-                            {selectedAnimal.health}
-                          </Badge>
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Giá:</span>
-                        <div className="mt-1 font-semibold text-primary">
-                          {selectedAnimal.price}
-                        </div>
-                      </div>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Giống:</span>
+                      <p className="font-medium">{selectedAnimal.breed}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Tuổi:</span>
+                      <p className="font-medium">{selectedAnimal.age}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Cân nặng:</span>
+                      <p className="font-medium">{selectedAnimal.weight}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Sức khỏe:</span>
+                      <p className="font-medium">{selectedAnimal.health}</p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-2">Mô tả</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {selectedAnimal.description}
+                    <span className="text-muted-foreground text-sm">Giá:</span>
+                    <p className="font-semibold text-lg text-primary">
+                      {selectedAnimal.price}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-2">Thống kê</h4>
-                    <div className="grid grid-cols-3 gap-3 text-center">
-                      <div className="bg-muted p-3 rounded-lg">
-                        <div className="text-lg font-bold text-primary">
-                          {selectedAnimal.swipes}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Lượt quẹt
-                        </div>
+                    <span className="text-muted-foreground text-sm">
+                      Mô tả:
+                    </span>
+                    <p className="text-sm mt-1">{selectedAnimal.description}</p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 pt-2">
+                    <div className="text-center">
+                      <div className="text-lg font-semibold text-blue-600">
+                        {selectedAnimal.swipes}
                       </div>
-                      <div className="bg-muted p-3 rounded-lg">
-                        <div className="text-lg font-bold text-accent">
-                          {selectedAnimal.matches}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Kết nối
-                        </div>
+                      <div className="text-xs text-muted-foreground">
+                        Lượt xem
                       </div>
-                      <div className="bg-muted p-3 rounded-lg">
-                        <div className="text-lg font-bold text-blue-500">
-                          {selectedAnimal.status === "Đang hiển thị"
-                            ? "Hiển thị"
-                            : "Ẩn"}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Trạng thái
-                        </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-semibold text-green-600">
+                        {selectedAnimal.matches}
+                      </div>
+                      <div className="text-xs text-muted-foreground">Match</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-semibold text-orange-600">
+                        0
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Tin nhắn
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="flex space-x-3 pt-4">
-                  <Button
-                    variant="outline"
-                    className="flex-1"
-                    onClick={() => {
-                      setShowDetailModal(false);
-                      handleEditAnimal(selectedAnimal);
-                    }}
-                  >
-                    <Edit className="h-4 w-4 mr-2" />
-                    Chỉnh sửa
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="flex-1"
-                    onClick={() => {
-                      setShowDetailModal(false);
-                      handleDeleteAnimal(selectedAnimal.id);
-                    }}
-                  >
-                    <Trash2 className="h-4 w-4 mr-2" />
-                    Xóa
-                  </Button>
-                </div>
               </div>
             )}
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setShowDetailModal(false)}
+              >
+                Đóng
+              </Button>
+            </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
