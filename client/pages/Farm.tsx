@@ -159,9 +159,27 @@ export default function Farm() {
 
   // Species options
   const speciesOptions = [
-    { value: "cow", label: "Bò", emoji: "🐄" },
-    { value: "pig", label: "Heo/Lợn", emoji: "🐷" },
-    { value: "chicken", label: "Gà", emoji: "🐓" },
+    {
+      value: "cow",
+      label: "Bò",
+      image:
+        "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=100&h=100&fit=crop&crop=face",
+      icon: "🐄",
+    },
+    {
+      value: "pig",
+      label: "Heo/Lợn",
+      image:
+        "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=100&h=100&fit=crop&crop=face",
+      icon: "🐷",
+    },
+    {
+      value: "chicken",
+      label: "Gà",
+      image:
+        "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=100&h=100&fit=crop&crop=face",
+      icon: "🐓",
+    },
   ];
 
   // Calculate animal counts by species
@@ -834,7 +852,7 @@ export default function Farm() {
 
                   <div>
                     <span className="text-muted-foreground text-sm">
-                      Mô tả:
+                      Mô t��:
                     </span>
                     <p className="text-sm mt-1">{selectedAnimal.description}</p>
                   </div>
