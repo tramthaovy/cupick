@@ -183,7 +183,7 @@ export default function Messages() {
     {
       id: 1,
       content:
-        "Xin chào! Tôi l�� AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
+        "Xin chào! Tôi là AI Assistant của Cupick. Tôi có thể giúp bạn tư vấn về chăn nuôi, giá cả thị trường và kết nối với người bán phù hợp. Bạn cần hỗ trợ gì?",
       isBot: true,
       timestamp: "Bây giờ",
     },
@@ -191,7 +191,11 @@ export default function Messages() {
   const [aiInput, setAiInput] = useState("");
 
   const handleSelectChat = (conversation: any) => {
-    setSelectedChat(conversation);
+    if (conversation.isAI) {
+      setShowAIChat(true);
+    } else {
+      setSelectedChat(conversation);
+    }
   };
 
   const handleSendMessage = () => {
@@ -225,7 +229,7 @@ export default function Messages() {
           id: chatMessages.length + 1,
           senderId: 1,
           senderName: "Tôi",
-          content: `[H��nh ảnh: ${file.name}]`,
+          content: `[Hình ảnh: ${file.name}]`,
           timestamp: "Bây giờ",
           type: "image",
           status: "delivered",
@@ -834,7 +838,7 @@ export default function Messages() {
               </Card>
 
               <div className="space-y-2">
-                <h4 className="font-semibold text-sm">G��i ý câu hỏi:</h4>
+                <h4 className="font-semibold text-sm">Gợi ý câu hỏi:</h4>
                 <div className="space-y-2">
                   {[
                     "Giá lợn giống hiện tại như thế nào?",
