@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Heart, X, Eye, MapPin, Bell } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Heart, X, Eye, MapPin, Bell, Star, Shield, Users } from "lucide-react";
 import MobileLayout from "@/components/MobileLayout";
 import NotificationModal from "@/components/NotificationModal";
 import { useNavigate } from "react-router-dom";
