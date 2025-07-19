@@ -571,7 +571,7 @@ export default function Messages() {
               <DialogTitle>Chặn người dùng</DialogTitle>
               <DialogDescription>
                 Bạn có chắc muốn chặn {selectedChat.participant.name}? Hai bên
-                sẽ không thể liên lạc và nhìn thấy nhau nữa.
+                sẽ không thể liên lạc và nhìn th���y nhau nữa.
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
@@ -607,7 +607,7 @@ export default function Messages() {
                 Hủy
               </Button>
               <Button variant="destructive" onClick={handleEndChat}>
-                Kết thúc
+                Kết th��c
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -830,54 +830,6 @@ export default function Messages() {
                 </div>
               )}
             </>
-          )}
-
-          {/* AI Assistant Tab */}
-          {activeTab === "ai" && (
-            <div className="space-y-4">
-              <Card className="bg-gradient-to-r from-primary/10 to-accent/10">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Bot className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">AI Assistant</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Tư vấn chăn nuôi, giá cả thị trường và kết nối phù hợp
-                  </p>
-                  <Button
-                    onClick={() => setShowAIChat(true)}
-                    className="w-full"
-                  >
-                    Bắt đầu trò chuyện
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <div className="space-y-2">
-                <h4 className="font-semibold text-sm">Gợi ý câu hỏi:</h4>
-                <div className="space-y-2">
-                  {[
-                    "Giá lợn giống hiện tại như thế nào?",
-                    "Cách chọn bò giống chất lượng?",
-                    "Kỹ thuật nuôi gà thả vườn?",
-                    "Tìm người bán uy tín trong khu vực",
-                  ].map((question, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left h-auto py-2 px-3"
-                      onClick={() => {
-                        setAiInput(question);
-                        setShowAIChat(true);
-                      }}
-                    >
-                      {question}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
           )}
         </div>
       </div>
